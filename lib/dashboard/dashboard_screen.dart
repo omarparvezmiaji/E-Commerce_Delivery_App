@@ -5,6 +5,8 @@ import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../common_widgets/my_app_bar.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -15,20 +17,23 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: ListView(
           children: [
-            AppBanner(
-              titel_text: "DashBoard",
-              trailing: Icons.notifications,
-              leading: Icons.menu,
-            ),
+            // AppBanner(
+            //   titel_text: "DashBoard",
+            //   trailing: Icons.notifications,
+            //   leading: Icons.menu,
+            // ),
+            myAppBar(context: context, title: 'Dashboard', page: 'Dashboard'),
+            SizedBox(height: 10,),
             padded(SearchWidget()),
             SizedBox(
               height: 10,
             ),
             GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisExtent: 200,
@@ -86,21 +91,21 @@ class _DashboardState extends State<Dashboard> {
       borderRadius: BorderRadius.circular(20),
       color: AppColors.lightColor,
       child: Container(
-        height: 70,
+        height: 60,
         padding: EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
               child: TextField(
-                  style: TextStyle(color: Colors.black87, fontSize: 20),
+                  style: TextStyle(color: Colors.black87, fontSize: 16),
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       fillColor: AppColors.fillColor,
                       filled: true,
                       hintText: "Search",
                       hintStyle:
-                          TextStyle(fontSize: 20, color: Colors.black87))),
+                          TextStyle(fontSize: 16, color: Colors.black87))),
             ),
             InkWell(
               child: Icon(
