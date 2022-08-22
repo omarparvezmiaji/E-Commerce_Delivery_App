@@ -33,14 +33,14 @@ class _DashboardState extends State<Dashboard> {
                 height: 10,
               ),
               GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisExtent: 200,
-                      crossAxisCount: 2,
-                      //childAspectRatio: 1 / 1,
-                      crossAxisSpacing: 0,
-                      //mainAxisSpacing: 10
+                    crossAxisCount: 2,
+                    //childAspectRatio: 1 / 1,
+                    crossAxisSpacing: 0,
+                    //mainAxisSpacing: 10
                   ),
                   itemCount: demoDashBoardModel.length,
                   itemBuilder: (context, index) {
@@ -63,12 +63,12 @@ class _DashboardState extends State<Dashboard> {
                               Image(image: AssetImage('${demoDashBoardModel[index].imagePath}'),width: 100,height: 100),
                               AppText(text: demoDashBoardModel[index].name),
                               Container(
-                                  //margin: EdgeInsets.all(15.0),
-                                height: 30,
-                                width: 30,
+                                //margin: EdgeInsets.all(15.0),
+                                  height: 30,
+                                  width: 30,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: AppColors.darkColor),
-                                      shape: BoxShape.circle,),
+                                    shape: BoxShape.circle,),
 
                                   child: Center(child: AppText(text: demoDashBoardModel[index].counter.toString())))
 
@@ -112,7 +112,7 @@ class _DashboardState extends State<Dashboard> {
                       filled: true,
                       hintText: "Search",
                       hintStyle:
-                          const TextStyle(fontSize: 20, color: Colors.black87))),
+                      const TextStyle(fontSize: 20, color: Colors.black87))),
             ),
             InkWell(
               child: const Icon(
@@ -129,21 +129,21 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  // Widget getButton(BuildContext context) {
-  //   return AppButton(
-  //     label: "Start",
-  //     fontWeight: FontWeight.w700,
-  //     padding: const EdgeInsets.symmetric(vertical: 25),
-  //     onPressed: () {
-  //       onGetStartedClicked(context);
-  //     },
-  //   );
-  // }
-  // void onGetStartedClicked(BuildContext context) {
-  //   Navigator.of(context).pushReplacement(MaterialPageRoute(
-  //     builder: (BuildContext context) {
-  //       return const Notifications_Empty();
-  //     },
-  //   ));
-  // }
+// Widget getButton(BuildContext context) {
+//   return AppButton(
+//     label: "Start",
+//     fontWeight: FontWeight.w700,
+//     padding: const EdgeInsets.symmetric(vertical: 25),
+//     onPressed: () {
+//       onGetStartedClicked(context);
+//     },
+//   );
+// }
+// void onGetStartedClicked(BuildContext context) {
+//   Navigator.of(context).pushReplacement(MaterialPageRoute(
+//     builder: (BuildContext context) {
+//       return const Notifications_Empty();
+//     },
+//   ));
+// }
 }

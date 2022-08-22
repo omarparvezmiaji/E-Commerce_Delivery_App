@@ -1,3 +1,4 @@
+import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
 import 'package:delivery_app/screens/login.dart';
 import 'package:delivery_app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
+      home:PendingDelivery(),
+
+      //WelcomeScreen(),
     );
   }
 }
