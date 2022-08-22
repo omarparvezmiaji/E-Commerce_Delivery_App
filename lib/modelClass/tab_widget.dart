@@ -9,6 +9,10 @@ tabWidget({text, String? imagePath,font_Size}) {
         padding: const EdgeInsets.all(10),
          //margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
+          border: Border.all(
+            width: .5,
+            color: Colors.grey
+          ),
 
           //color: Colors.white,
           // color: const Color(0xfffff4f2),

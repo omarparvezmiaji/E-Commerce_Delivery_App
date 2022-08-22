@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../modelClass/details_order_card.dart';
+
 class OnTheWayScreen extends StatefulWidget {
   const OnTheWayScreen({Key? key}) : super(key: key);
 
@@ -12,9 +14,14 @@ class _OnTheWayScreenState extends State<OnTheWayScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('OnTheWayScreen'),
-      ),
-    );
+        body: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: 12,
+            itemBuilder: (context, index) {
+              return detailsOrderCard();
+            })
+
+
+        );
   }
 }

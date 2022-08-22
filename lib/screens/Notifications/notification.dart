@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../common_widgets/my_app_bar.dart';
+import '../../modelClass/details_order_card.dart';
 import '../../modelClass/order_card.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             shrinkWrap: true,
             children: [
               myAppBar(
-                  context: context,
+                   context: context,
                   title: 'Notifications',
                   page: 'Notifications'),
               Padding(
@@ -45,7 +46,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ],
                 ),
               ),
-              orderCard(
+
+            // detailsOrderCard(),
+              orderCard( context:context,
                 time: 'Now',
                 color: const Color(0xfffff4f2),
               ),
@@ -58,8 +61,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ),
 
               //   <======== calling order Card ========>
-              orderCard(),
-              orderCard(),
+              orderCard(
+                context:context,
+              ),
+              orderCard( context:context,),
               const Text(
                 '     Last 7 Days',
                 style: TextStyle(

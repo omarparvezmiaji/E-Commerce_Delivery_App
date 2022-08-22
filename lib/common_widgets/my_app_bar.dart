@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../screens/Notifications/notification.dart';
+import '../screens/ProfilePage.dart';
 import '../styles/colors.dart';
 import 'app_text.dart';
 
@@ -20,15 +21,21 @@ myAppBar({context, title, page}) {
     child: Padding(
       padding: const EdgeInsets.only(top: 10.0,bottom: 10.0),
       child: ListTile(
-        iconColor: AppColors.lightColor,
-
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(
               Icons.menu,size: 30,
               color: Colors.white,
             ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+           // onPressed: () => Scaffold.of(context).openDrawer(),
+            onPressed: (){
+
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      child:  ProfilePage(),
+                      type: PageTransitionType.rightToLeft));
+            },
 
           ),
         ),
@@ -51,7 +58,7 @@ myAppBar({context, title, page}) {
                       child: const NotificationScreen(),
                       type: PageTransitionType.leftToRight));
             },
-            icon: const Icon(Icons.notifications,size: 30, color: Colors.white)),
+            icon: const Icon(Icons.notification_add_rounded,size: 30, color: Colors.white)),
       ),
     ),
   );

@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
+import '../screens/Pending_Delivery/pending_delivery_main.dart';
 import '../styles/my_app_size.dart';
 
-orderCard({ time,color}){
+orderCard({context, time,color}){
 
   return   Container(
       padding: const EdgeInsets.all(10),
@@ -84,17 +86,28 @@ orderCard({ time,color}){
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
                         primary: const Color(0xffffe2db)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: const PendingDelivery(),
+                              type: PageTransitionType.rightToLeft));
+                    },
                     child: const Text(
                       'See Order',
                       style: TextStyle(
-                          color: Colors.redAccent,
-                          fontWeight: FontWeight.bold),
+                          color: Colors.red,
+                          fontWeight: FontWeight.w900),
                     )),
               ],
             ),
           ),
-        ],
+        ]
+
+
+
       ));
+
+
 
 }

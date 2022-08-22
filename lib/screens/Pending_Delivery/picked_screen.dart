@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../modelClass/details_order_card.dart';
+
 class PickedScreen extends StatefulWidget {
   const PickedScreen({Key? key}) : super(key: key);
 
@@ -10,10 +12,15 @@ class PickedScreen extends StatefulWidget {
 class _PickedScreenState extends State<PickedScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('PickedScreen'),
-      ),
+    return
+
+      Scaffold(
+      body:  ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: 2,
+          itemBuilder: (context, index) {
+            return detailsOrderCard();
+          })
     );
   }
 }
