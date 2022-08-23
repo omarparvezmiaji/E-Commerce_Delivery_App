@@ -1,6 +1,7 @@
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/navigator/navigator.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -114,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
   void onGetStartedClicked(BuildContext context) {
     Navigator.of(context).pushReplacement(new MaterialPageRoute(
       builder: (BuildContext context) {
-        return Dashboard();
+        return Navigator_Page();
       },
     ));
   }
