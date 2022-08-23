@@ -43,7 +43,8 @@ class AppBanner extends StatelessWidget {
 
                   ),
                 ),
-                title: AppText(text: titel_text,color: AppColors.lightColor,fontWeight: FontWeight.bold),
+                title: AppText(text: titel_text,fontSize: 18.0,fontWeight:  FontWeight.bold,color:  AppColors.lightColor),
+                //AppText(text: titel_text,color: AppColors.lightColor,fontWeight: FontWeight.bold),
                 trailing: IconButton(icon: Icon(Icons.notifications),iconSize: 30,onPressed: (){
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (BuildContext context) {

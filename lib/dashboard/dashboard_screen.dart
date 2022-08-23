@@ -61,16 +61,16 @@ class _DashboardState extends State<Dashboard> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Image(image: AssetImage('${demoDashBoardModel[index].imagePath}'),width: 100,height: 100),
-                              AppText(text: demoDashBoardModel[index].name),
+                              AppText(text: demoDashBoardModel[index].name,fontSize:  18.0),
                               Container(
                                 //margin: EdgeInsets.all(15.0),
-                                  height: 30,
-                                  width: 30,
+                                //   height: 30,
+                                //   width: 30,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: AppColors.darkColor),
                                     shape: BoxShape.circle,),
 
-                                  child: Center(child: AppText(text: demoDashBoardModel[index].counter.toString())))
+                                  child: Center(child: AppText(text: demoDashBoardModel[index].counter.toString(),fontSize:  18.0)))
 
                             ],
                           ),

@@ -38,10 +38,10 @@ class Complete_Delivery_Empty extends StatelessWidget {
             SizedBox(height: 40,),
             AppText(
               text: "Don't have any item in the \n Complete Delivery list",
-              fontSize: 22,
+              fontSize: 22.0,
             ),
             SizedBox(height: 40,),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 30),
+            Padding(padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: getButton(context),),
 
           ],

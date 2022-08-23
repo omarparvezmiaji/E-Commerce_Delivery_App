@@ -9,11 +9,15 @@ import 'package:flutter/painting.dart';
 class WelcomeScreen extends StatelessWidget {
   final String imagePath = "assets/welcome_image.jpg";
 
+
   @override
+
+  
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imagePath),
@@ -56,7 +60,7 @@ class WelcomeScreen extends StatelessWidget {
   Widget welcomeTextWidget() {
     return AppText(
           text: "Welcome",
-          fontSize: 48,
+          fontSize: 48.0,
           fontWeight: FontWeight.w600,
           color: AppColors.darkColor,
     );
@@ -75,14 +79,14 @@ class WelcomeScreen extends StatelessWidget {
     return AppButton(
       label: "Start",
       fontWeight: FontWeight.w700,
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(vertical: 25.0),
       onPressed: () {
         onGetStartedClicked(context);
       },
     );
   }
   void onGetStartedClicked(BuildContext context) {
-    Navigator.of(context).pushReplacement(new MaterialPageRoute(
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (BuildContext context) {
         return LoginPage();
       },

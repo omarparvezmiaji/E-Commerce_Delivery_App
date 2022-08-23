@@ -85,11 +85,7 @@ class _Total_CollectedState extends State<Total_Collected> {
               ),
               padded(Row(
                 children: [
-                  AppText(
-                    text: "Last Week Collected",
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.darkColor,
-                  ),
+                  AppText(text: "Last Week Collected",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.darkColor),
                   Spacer(),
                   DropdownDemo(),
                   // Material(
@@ -149,7 +145,7 @@ class _Total_CollectedState extends State<Total_Collected> {
                   itemBuilder: (context, index) {
                     return Container(
                       padding: EdgeInsets.all(12.0),
-                      margin: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         border: Border.all(color: AppColors.darkColor, width: 0),
@@ -161,21 +157,12 @@ class _Total_CollectedState extends State<Total_Collected> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  AppText(
-                                    text: "Orde Code",
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.darkColor,
-                                  ),
-                                  AppText(
-                                      text:
-                                          "${demototalCollectionModel[index].orderCode}",
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.primaryColor),
+                                  AppText(text: "Orde Code",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.darkColor),
+                                  AppText(text: "${demototalCollectionModel[index].orderCode}",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.primaryColor),
                                 ],
                               ),
                               Spacer(),
-                              AppText(text: '${demototalCollectionModel[index].price}',fontWeight: FontWeight.bold,
-                                  color: AppColors.primaryColor,fontSize: 22,)
+                              AppText(text: '${demototalCollectionModel[index].price}',fontSize: 22.0,fontWeight:  FontWeight.bold,color:  AppColors.primaryColor),
                             ],
                           ),
                           Divider(
@@ -183,9 +170,9 @@ class _Total_CollectedState extends State<Total_Collected> {
                           ),
                           Row(
                             children: [
-                              AppText(text: '${demototalCollectionModel[index].time}',fontSize: 16,),
+                              AppText(text: '${demototalCollectionModel[index].time}', fontSize: 16.0),
                               Spacer(),
-                              AppText(text: 'Quantity: ${demototalCollectionModel[index].items}',fontSize: 16,)
+                              AppText(text: 'Quantity: ${demototalCollectionModel[index].items}',fontSize: 16.0)
                             ],
                           )
                         ],
@@ -231,7 +218,7 @@ class _Total_CollectedState extends State<Total_Collected> {
   // }
   Widget padded(Widget widget) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: EdgeInsets.symmetric(horizontal: 12.0),
       child: widget,
     );
   }

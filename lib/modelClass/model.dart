@@ -1,14 +1,17 @@
 import 'package:delivery_app/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/screens/Earning/earning.dart';
+import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
 import 'package:delivery_app/screens/Total%20Collection/total_collected.dart';
+import 'package:flutter/material.dart';
 
 class DashBoardModel {
   var name;
-  var imagePath, pageName;
+  var imagePath;
+  Widget pageName;
   int counter;
 
   DashBoardModel(
-      {this.name, this.imagePath, required this.counter, this.pageName});
+      {this.name, this.imagePath, required this.counter, required this.pageName});
 }
 
 var demoDashBoardModel = [
@@ -21,7 +24,7 @@ var demoDashBoardModel = [
       name: "Pending Delivery",
       imagePath: "assets/dashboard/pending.png",
       counter: 0,
-      pageName: ""),
+      pageName: PendingDelivery()),
   DashBoardModel(
       name: "Total Collected",
       imagePath: "assets/dashboard/collection.png",

@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               color: Color(0xff4c505b),
-                              fontSize: 18,
+                              fontSize: 18.0,
                             ),
                           )),
                     ),
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget Delivery_Service_TextWidget() {
     return AppText(
       text: "ABC Delivery Service",
-      fontSize: 28,
+      fontSize: 28.0,
       fontWeight: FontWeight.w600,
       color: AppColors.primaryColor,
     );
@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
     return AppButton(
       label: "Login",
       fontWeight: FontWeight.w700,
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(vertical: 25.0),
       onPressed: () {
         onGetStartedClicked(context);
       },
