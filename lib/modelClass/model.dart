@@ -4,6 +4,8 @@ import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart
 import 'package:delivery_app/screens/Total%20Collection/total_collected.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/Pending_Delivery/pending_delivery_main.dart';
+
 class DashBoardModel {
   var name;
   var imagePath;
