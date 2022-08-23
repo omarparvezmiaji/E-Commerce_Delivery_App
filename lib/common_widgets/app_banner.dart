@@ -1,6 +1,6 @@
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/common_widgets/icon_button.dart';
-import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/screens/notification.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';

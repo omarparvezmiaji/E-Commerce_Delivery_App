@@ -1,4 +1,5 @@
 import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
+import 'package:delivery_app/screens/complete_delivery/completed_delivery_items.dart';
 import 'package:delivery_app/screens/login.dart';
 import 'package:delivery_app/screens/profile_details.dart';
 import 'package:delivery_app/screens/welcome_screen.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home://ProfileDetails(),
-
+      //CompletedDeliveryItems(),
       WelcomeScreen(),
 
       //PendingDelivery(),

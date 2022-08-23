@@ -1,9 +1,12 @@
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
-import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/controller/api_controller.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/navigator/navigator.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'forgot_password.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -17,28 +20,31 @@ class _LoginPageState extends State<LoginPage> {
   //final String login_imagePath = "assets/delivery_man_Login.png";
   bool _isObscure = true;
 
+  ///for input field controller
+  var emailController     = TextEditingController();
+  var passwordController  = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
             child: Column(children: [
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               Center(child: Delivery_Service_TextWidget(),),
-              Image(
+              const Image(
                 image: AssetImage('assets/delivery_man_Login.png'),
                 height: 300,
                 width: 300,
               ),
               Container(
-                margin: EdgeInsets.only(left: 35, right: 35,bottom: 40),
+                margin: const EdgeInsets.only(left: 35, right: 35,bottom: 40),
                 child: Column(
                   children: [
                     TextField(
-
-                      style: TextStyle(color: Colors.black),
-
-
+                      controller: emailController,
+                      style: const TextStyle(color: Colors.black),
                       decoration: InputDecoration(
                           fillColor: AppColors.fillColor,
                           filled: true,
@@ -47,11 +53,11 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(10),
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     TextField(
-
+                      controller: passwordController,
                       obscureText: _isObscure,
                       decoration: InputDecoration(
                           fillColor: AppColors.fillColor,
@@ -73,8 +79,11 @@ class _LoginPageState extends State<LoginPage> {
                     Align(
                       alignment: Alignment.bottomRight,
                       child: TextButton(
-                          onPressed: () {},
-                          child: Text(
+                          onPressed: () {
+                            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
+                          },
+                          child: const Text(
                             'Forgot Password?',
                             textAlign: TextAlign.right,
                             style: TextStyle(
@@ -106,16 +115,31 @@ class _LoginPageState extends State<LoginPage> {
     return AppButton(
       label: "Login",
       fontWeight: FontWeight.w700,
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: const EdgeInsets.symmetric(vertical: 25),
       onPressed: () {
-        onGetStartedClicked(context);
+        // onGetStartedClicked(context);
+
+        if(emailController.text != '' && passwordController.text != ''){
+          Navigator.of(context).pushReplacement(new MaterialPageRoute(
+            builder: (BuildContext context) {
+              return const Dashboard();
+            },
+          ));
+          login(phone: emailController.text, password: passwordController.text);
+        }
+        else if(emailController.text == ''){
+          print('Please Enter a Phone Number');
+        }
+        else if(passwordController.text == ''){
+          print('Please Enter a Password');
+        }
       },
     );
   }
   void onGetStartedClicked(BuildContext context) {
     Navigator.of(context).pushReplacement(new MaterialPageRoute(
       builder: (BuildContext context) {
-        return Navigator_Page();
+        return const Dashboard();
       },
     ));
   }

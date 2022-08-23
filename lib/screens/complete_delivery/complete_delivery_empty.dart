@@ -1,7 +1,7 @@
 import 'package:delivery_app/common_widgets/app_banner.dart';
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
-import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class Complete_Delivery_Empty extends StatelessWidget {

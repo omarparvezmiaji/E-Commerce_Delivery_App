@@ -1,4 +1,4 @@
-import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/screens/Earning/earning.dart';
 import 'package:delivery_app/screens/Total%20Collection/total_collected.dart';
 

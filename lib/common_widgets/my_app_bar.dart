@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../screens/Notifications/notification.dart';
-import '../screens/ProfilePage.dart';
 import '../styles/colors.dart';
 import 'app_text.dart';
 
@@ -27,15 +25,15 @@ myAppBar({context, title, page}) {
               Icons.menu,size: 30,
               color: Colors.white,
             ),
-           // onPressed: () => Scaffold.of(context).openDrawer(),
-            onPressed: (){
-
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      child:  ProfilePage(),
-                      type: PageTransitionType.rightToLeft));
-            },
+            onPressed: () => Scaffold.of(context).openDrawer(),
+            // onPressed: (){
+            //
+            //   Navigator.push(
+            //       context,
+            //       PageTransition(
+            //           child:  ProfilePage(),
+            //           type: PageTransitionType.rightToLeft));
+            // },
 
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:delivery_app/common_widgets/Drawer.dart';
 import 'package:delivery_app/common_widgets/app_banner.dart';
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
@@ -18,6 +19,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: myDrawer(context),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

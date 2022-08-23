@@ -4,6 +4,7 @@ import 'package:delivery_app/screens/Pending_Delivery/picked_screen.dart';
 
 import 'package:flutter/material.dart';
 
+import '../../common_widgets/Drawer.dart';
 import '../../common_widgets/my_app_bar.dart';
 import '../../modelClass/tab_widget.dart';
 import '../../styles/colors.dart';
@@ -23,6 +24,7 @@ class _PendingDeliveryState extends State<PendingDelivery>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: myDrawer(context),
         body: Column(
           children: [
             myAppBar(
@@ -63,7 +65,9 @@ class _PendingDeliveryState extends State<PendingDelivery>
                       // Text('Picked (2)'),
                       // Text('Assigned (5)'),
                       tabWidget(text: 'Assigned\n     (5)'),
-                      tabWidget(text: 'Picked\n     (2)',imagePath: 'assets/images/picked.png'),
+                      tabWidget(
+                          text: 'Picked\n     (2)',
+                          imagePath: "assets/dashboard/collection.png"),
                       tabWidget(
                         text: 'On The Way\n     (12)',
                         imagePath: 'assets/complete delivery.png',

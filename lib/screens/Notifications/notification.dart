@@ -1,3 +1,4 @@
+import 'package:delivery_app/common_widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../common_widgets/my_app_bar.dart';
@@ -16,6 +17,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: myDrawer(context),
         body: ListView(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
