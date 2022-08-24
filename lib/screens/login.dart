@@ -1,6 +1,7 @@
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/modelClass/api_request/api.dart';
 import 'package:delivery_app/navigator/navigator.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //final String login_imagePath = "assets/delivery_man_Login.png";
   bool _isObscure = true;
+  ///login
+  var emailController = TextEditingController();
+  var passwordlController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +40,14 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     TextField(
-
+                      controller: emailController,
                       style: TextStyle(color: Colors.black),
 
 
                       decoration: InputDecoration(
                           fillColor: AppColors.fillColor,
                           filled: true,
-                          hintText: "Email",
+                          hintText: "Email or Mobile No",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           )),
@@ -51,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 10,
                     ),
                     TextField(
-
+                      controller: passwordlController,
                       obscureText: _isObscure,
                       decoration: InputDecoration(
                           fillColor: AppColors.fillColor,
@@ -108,15 +113,16 @@ class _LoginPageState extends State<LoginPage> {
       fontWeight: FontWeight.w700,
       padding: EdgeInsets.symmetric(vertical: 25.0),
       onPressed: () {
-        onGetStartedClicked(context);
+        // onGetStartedClicked(context);
+        Login(context, emailController.text, passwordlController.text);
       },
     );
   }
-  void onGetStartedClicked(BuildContext context) {
-    Navigator.of(context).pushReplacement(new MaterialPageRoute(
-      builder: (BuildContext context) {
-        return Navigator_Page();
-      },
-    ));
-  }
+  // void onGetStartedClicked(BuildContext context) {
+  //   Navigator.of(context).pushReplacement(new MaterialPageRoute(
+  //     builder: (BuildContext context) {
+  //       return Navigator_Page();
+  //     },
+  //   ));
+  // }
 }

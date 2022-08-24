@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class AppBanner extends StatelessWidget {
   final String titel_text;
+
   // var leading;
   // var trailing;
 

@@ -12,7 +12,7 @@ class AppColors {
   static const primaryColor = Color(0xFFe62e03);
   static const darkColor = Colors.black87;
   static const darkGrey = Color(0xff636363);
-  static const lightColor_1 = Color(0xFFF2F3F2);
+  // static const lightColor_1 = Color(0xFFF2F3F2);
   static const lightColor = Colors.white;
   static var fillColor = Colors.grey.shade100;
   static const blueDark           = Color(0xff1B5A90);

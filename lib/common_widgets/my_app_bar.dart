@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../screens/Notifications/notification.dart';
@@ -34,7 +33,8 @@ myAppBar({context, title, page}) {
                   context,
                   PageTransition(
                       child:  ProfilePage(),
-                      type: PageTransitionType.rightToLeft));
+                      type: PageTransitionType.rightToLeftJoined));
+
             },
 
           ),
@@ -46,18 +46,14 @@ myAppBar({context, title, page}) {
             onPressed: () {
               page == 'Notifications'
                   ? null
-                  : Navigator.push(
-                  context,
-                  PageTransition(
-                      child: const NotificationScreen(),
-                      type: PageTransitionType.rightToLeft));
-              page == 'Notifications'
-                  ? null
-                  : Navigator.push(
-                  context,
-                  PageTransition(
-                      child: const NotificationScreen(),
-                      type: PageTransitionType.leftToRight));
+                  : Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationScreen()));
+              // page == 'Notifications'
+              //     ? null
+              //     : Navigator.push(
+              //     context,
+              //     PageTransition(
+              //         child: const NotificationScreen(),
+              //         type: PageTransitionType.leftToRight));
             },
             icon: const Icon(Icons.notifications,size: 30, color: AppColors.lightColor)),
       ),
