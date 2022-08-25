@@ -35,13 +35,13 @@ myAppBar({context, title, page}) {
             //           type: PageTransitionType.rightToLeft));
             // },
 
-           // onPressed: () => Scaffold.of(context).openDrawer(),
+
 
 
 
           ),
         ),
-        title:AppText(text: title,fontSize: 24.0, fontWeight: FontWeight.bold, color: AppColors.lightColor),
+        title:AppText(text: title,fontSize: 24.0, fontWeight: FontWeight.w900, color: AppColors.lightColor),
        // title:AppText(text: title,fontSize:  24.0,fontWeight:  FontWeight.bold,color: Colors.white),
         // trailing: Icon(trailing, size: 30),
         trailing:  IconButton(
@@ -62,7 +62,7 @@ myAppBar({context, title, page}) {
               //         type: PageTransitionType.leftToRight));
 
             },
-            icon: const Icon(Icons.notifications,size: 30, color: AppColors.lightColor)),
+            icon: const Icon(Icons.notification_add,size: 30, color: AppColors.lightColor)),
       ),
     ),
   );
