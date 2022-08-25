@@ -1,6 +1,5 @@
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
-import 'package:delivery_app/controller/api_controller.dart';
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 
 //import 'package:delivery_app/dashboard/dashboard_screen.dart';
@@ -11,7 +10,6 @@ import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'forgot_password.dart';
-
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -28,98 +26,92 @@ class _LoginPageState extends State<LoginPage> {
   var emailController = TextEditingController();
   var passwordlController = TextEditingController();
 
-
   ///for input field controller
   // var emailController     = TextEditingController();
-  var passwordController = TextEditingController();
-
+  // var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
-            child: Column(children: [
-              const SizedBox(height: 15,),
-              Center(child: Delivery_Service_TextWidget(),),
-              const Image(
-                image: AssetImage('assets/delivery_man_Login.png'),
-                height: 300,
-                width: 300,
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 35, right: 35, bottom: 40),
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: emailController,
+        child: Column(children: [
+          const SizedBox(
+            height: 15,
+          ),
+          Center(
+            child: Delivery_Service_TextWidget(),
+          ),
+          const Image(
+            image: AssetImage('assets/delivery_man_Login.png'),
+            height: 300,
+            width: 300,
+          ),
+          Container(
+            margin: const EdgeInsets.only(left: 35, right: 35, bottom: 40),
+            child: Column(
+              children: [
+                TextField(
+                  controller: emailController,
 
-                      style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
 
-                      //    style: TextStyle(color: Colors.black),
+                  //    style: TextStyle(color: Colors.black),
 
-
-                      decoration: InputDecoration(
-                          fillColor: AppColors.fillColor,
-                          filled: true,
-                          hintText: "Email or Mobile No",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-
-                      controller: passwordController,
-
-                      //   controller: passwordlController,
-                      obscureText: _isObscure,
-                      decoration: InputDecoration(
-                        fillColor: AppColors.fillColor,
-                        filled: true,
-                        hintText: 'Password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-
-                        suffixIcon: IconButton(
-                            icon: Icon(_isObscure
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            }
-
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: TextButton(
-                          onPressed: () {
-                            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewScreen()));
-                            //Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
-                          },
-                          child: const Text(
-                            'Forgot Password?',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Color(0xff4c505b),
-                              fontSize: 18.0,
-                            ),
-                          )),
-                    ),
-
-                    getButton(context),
-                  ],
+                  decoration: InputDecoration(
+                      fillColor: AppColors.fillColor,
+                      filled: true,
+                      hintText: "Email or Mobile No",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      )),
                 ),
-              ),
-            ]),
-          )),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: passwordlController,
+                  obscureText: _isObscure,
+                  decoration: InputDecoration(
+                    fillColor: AppColors.fillColor,
+                    filled: true,
+                    hintText: 'Password',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    suffixIcon: IconButton(
+                        icon: Icon(_isObscure
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        }),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                      onPressed: () {
+                        //Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewScreen()));
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
+                      },
+                      child: const Text(
+                        'Forgot Password?',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Color(0xff4c505b),
+                          fontSize: 18.0,
+                        ),
+                      )),
+                ),
+                getButton(context),
+              ],
+            ),
+          ),
+        ]),
+      )),
     );
   }
 
@@ -136,27 +128,26 @@ class _LoginPageState extends State<LoginPage> {
     return AppButton(
       label: "Login",
       fontWeight: FontWeight.w700,
-
       padding: const EdgeInsets.symmetric(vertical: 25),
-
-
       onPressed: () {
         // onGetStartedClicked(context);
 
+        if (emailController.text != '' && passwordlController.text != '') {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const Dashboard();
+              },
+            ),
+          );
 
-        if (emailController.text != '' && passwordController.text != '') {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) {
-            //  return const Dashboard();
-              return  LoginScreen();
-            },
-          ));
-          login(phone: emailController.text, password: passwordController.text);
-        }
-        else if (emailController.text == '') {
+          //-----> Sending Login credentials <-----
+
+          Login(context,
+              email: emailController.text, password: passwordlController.text);
+        } else if (emailController.text == '') {
           print('Please Enter a Phone Number');
-        }
-        else if (passwordController.text == '') {
+        } else if (passwordlController.text == '') {
           print('Please Enter a Password');
         }
       },
@@ -171,7 +162,6 @@ class _LoginPageState extends State<LoginPage> {
     ));
   }
 
-// Login(context, emailController.text, passwordlController.text);
 
 
 // void onGetStartedClicked(BuildContext context) {

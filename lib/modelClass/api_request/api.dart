@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:delivery_app/modelClass/api_request/login_model.dart';
 import 'package:delivery_app/navigator/navigator.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,13 +15,14 @@ var x;
 
 
 ///for snackbar Message
-snackBarMessage(BuildContext context, String exp){
+snackBarMessage(BuildContext context, String message){
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: AppColors.greyColor,
       content: Text(
-        exp,
+        message,
         style: const TextStyle(
+          fontSize: 20.0,
             color: Colors.white,
             fontWeight: FontWeight.normal
         ),
@@ -31,7 +33,7 @@ snackBarMessage(BuildContext context, String exp){
 
 
 ///Login Request
-Future Login(BuildContext context, email,password)async{
+Future Login(BuildContext context, {email,password})async{
   print('Email: $email');
   print('Password: $password');
 
@@ -48,29 +50,35 @@ Future Login(BuildContext context, email,password)async{
     // var status = json.decode(response.body)['status'];
     loginResponse smartDeliveryMan = loginResponseFromJson(response.body);
 
-    print("Status: ${smartDeliveryMan.data.user.deliveryMan.name}");
+    print("Name one: ${smartDeliveryMan.data.user.deliveryMan.name}");
+    print("Status: ${smartDeliveryMan.status}");
 
     if(smartDeliveryMan.status == 1){
-      String token = await smartDeliveryMan.data.token;
+      print("------ > Token is :  ${smartDeliveryMan.data.token}" );
+      String token =  smartDeliveryMan.data.token;
+      print("------ > Token is again :  $token" );
       await prefs.setString('token', token);
 
-      print("Status: ${smartDeliveryMan.data.user.name}");
+      print("DeliveryMan name from User is : ${smartDeliveryMan.data.user.name}");
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> Navigator_Page()));
+    //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Dashboard()));
 
 
-      x = prefs.getString("token");
-      print("show Tokkkkken: " + x);
+      x = await prefs.getString("token");
+
+       print("------ >  X  Token is  :  $x" );
+
+
     }
-    else {
+    else   {
 
       print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
 
-      snackBarMessage(context,"Mobile No or Password might be wrong");
+      snackBarMessage(context,"Mobile or Password  wrong");
 
     }
   }
-  else{
-    throw Exception('Failed to Fetch');
-  }
+  // else{
+  //   throw Exception('Failed to Fetch');
+  // }
 }

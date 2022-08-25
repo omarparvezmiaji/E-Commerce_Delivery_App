@@ -172,9 +172,9 @@ detailsOrderCard({ time,color,productName}){
 
                   onPressed: () async{
                     prefs = await SharedPreferences.getInstance();
-                  var  name = prefs!.getString("username");
+                  var TokenView = prefs!.getString("token");
 
-                  print('-------------$name----------');
+                  print('------>Token from view Details $TokenView');
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

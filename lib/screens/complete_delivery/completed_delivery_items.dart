@@ -85,6 +85,7 @@ collectCard({context, color}) {
             ),
           ]),
       child: Row(
+        //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -152,9 +153,7 @@ collectCard({context, color}) {
               ],
             ),
           ),
-          const Divider(
-            thickness: 2,
-          ),
+          //  const VerticalDivider(width: 2,color: Colors.indigo,),
           Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: 25.0),
