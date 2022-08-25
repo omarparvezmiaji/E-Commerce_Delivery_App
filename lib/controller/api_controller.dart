@@ -9,8 +9,6 @@ var baseUrl = 'https://app.sarabosorekrate.com/api';
 
 SharedPreferences? prefs;
 
-
-
 Future login({phone, password}) async{
 
   var url = Uri.parse('$baseUrl/login');

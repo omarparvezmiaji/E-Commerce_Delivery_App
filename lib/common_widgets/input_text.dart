@@ -69,7 +69,7 @@ inputText(
           readOnly: readOnly ?? false,
           decoration: InputDecoration(
               counter: const Offstage(),
-              hintText: '$hintText',
+              hintText: hintText,
               border: InputBorder.none,
               filled: true,
               isCollapsed: true,

@@ -6,6 +6,7 @@ import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 //import 'package:delivery_app/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/modelClass/api_request/api.dart';
 import 'package:delivery_app/navigator/navigator.dart';
+import 'package:delivery_app/screens/login_screen.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -146,7 +147,8 @@ class _LoginPageState extends State<LoginPage> {
         if (emailController.text != '' && passwordController.text != '') {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) {
-              return const Dashboard();
+            //  return const Dashboard();
+              return  LoginScreen();
             },
           ));
           login(phone: emailController.text, password: passwordController.text);

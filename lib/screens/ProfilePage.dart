@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../common_widgets/Drawer.dart';
 import '../common_widgets/my_app_bar.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,6 +24,7 @@ class MapScreenState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+        drawer: myDrawer(context),
         body:  Container(
           color: Colors.white,
           child:  ListView(

@@ -6,6 +6,8 @@ import 'package:delivery_app/modelClass/model.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../common_widgets/Drawer.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 
 class Earning extends StatefulWidget {
@@ -42,36 +44,37 @@ class _EarningState extends State<Earning> {
     deliveredCount = demototalCollectionModel.length;
     return deliveredCount;
   }
-  @override
-  void initState() {
-    screen_orientation() {
-      var hight;
-      var width;
-      var ratio;
-      if (MediaQuery
-          .of(context)
-          .orientation == Orientation.portrait) {
-        hight= MediaQuery.of(context).size.height / 9;
-        width = MediaQuery.of(context).size.width/2.2;
-        ratio = hight/width;
-        print("Hello::::::::: $ratio");
-        return ratio;
-      }
-      else
-      {
-        hight = MediaQuery.of(context).size.height/5;
-        width = MediaQuery.of(context).size.width/2.2;
-        ratio = hight/width;
-        print("Hello::::::::: $ratio");
-        return ratio;
-      }
-    }
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   screen_orientation() {
+  //     var hight;
+  //     var width;
+  //     var ratio;
+  //     if (MediaQuery
+  //         .of(context)
+  //         .orientation == Orientation.portrait) {
+  //       hight= MediaQuery.of(context).size.height / 9;
+  //       width = MediaQuery.of(context).size.width/2.2;
+  //       ratio = hight/width;
+  //       print("Hello::::::::: $ratio");
+  //       return ratio;
+  //     }
+  //     else
+  //     {
+  //       hight = MediaQuery.of(context).size.height/5;
+  //       width = MediaQuery.of(context).size.width/2.2;
+  //       ratio = hight/width;
+  //       print("Hello::::::::: $ratio");
+  //       return ratio;
+  //     }
+  //   }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: myDrawer(context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

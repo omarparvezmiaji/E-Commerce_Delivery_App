@@ -6,6 +6,8 @@ import 'package:delivery_app/modelClass/model.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../common_widgets/Drawer.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 
 class Total_Collected extends StatefulWidget {
@@ -76,6 +78,7 @@ class _Total_CollectedState extends State<Total_Collected> {
 
 
     return Scaffold(
+      drawer: myDrawer(context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

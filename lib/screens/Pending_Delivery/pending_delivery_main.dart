@@ -64,14 +64,15 @@ class _PendingDeliveryState extends State<PendingDelivery>
                       //
                       // Text('Picked (2)'),
                       // Text('Assigned (5)'),
-                      tabWidget(text: 'Assigned\n     (5)'),
+                      tabWidget(
+                          text: 'Assigned\n     (5)',
+                          imagePath: "assets/dashboard/complet.png"),
                       tabWidget(
                           text: 'Picked\n     (2)',
                           imagePath: "assets/dashboard/collection.png"),
                       tabWidget(
-                        text: 'On The Way\n     (12)',
-                        imagePath: 'assets/complete delivery.png',
-                      ),
+                          text: 'On The Way\n     (12)',
+                          imagePath: 'assets/complete delivery.png'),
                     ]),
               ),
             ),
