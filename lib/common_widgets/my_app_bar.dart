@@ -37,7 +37,8 @@ myAppBar({context, title, page}) {
 
           ),
         ),
-        title: AppText(text: title,color: AppColors.lightColor,fontWeight: FontWeight.bold),
+        title:AppText(text: title,fontSize: 24.0, fontWeight: FontWeight.bold, color: AppColors.lightColor),
+       // title:AppText(text: title,fontSize:  24.0,fontWeight:  FontWeight.bold,color: Colors.white),
         // trailing: Icon(trailing, size: 30),
         trailing:  IconButton(
             onPressed: () {
@@ -48,15 +49,9 @@ myAppBar({context, title, page}) {
                   PageTransition(
                       child: const NotificationScreen(),
                       type: PageTransitionType.rightToLeft));
-              page == 'Notifications'
-                  ? null
-                  : Navigator.push(
-                  context,
-                  PageTransition(
-                      child: const NotificationScreen(),
-                      type: PageTransitionType.leftToRight));
+
             },
-            icon: const Icon(Icons.notification_add_rounded,size: 30, color: Colors.white)),
+            icon: const Icon(Icons.notifications,size: 30, color: AppColors.lightColor)),
       ),
     ),
   );

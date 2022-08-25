@@ -59,6 +59,8 @@
 // }
 
 
+import 'package:delivery_app/common_widgets/app_text.dart';
+import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 class DropdownDemo extends StatefulWidget {
@@ -85,10 +87,7 @@ class _DropdownDemoState extends State<DropdownDemo> {
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(
-                    value,
-                    style: TextStyle(fontSize: 18),
-                  ),
+                  child: AppText(text: value,fontSize:  18.0,color:  AppColors.darkColor)
                 );
               }).toList(),
               // Step 5.

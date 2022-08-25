@@ -1,7 +1,10 @@
 import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
 import 'package:delivery_app/screens/complete_delivery/completed_delivery_items.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/screens/login.dart';
+import 'package:delivery_app/screens/login_screen.dart';
 import 'package:delivery_app/screens/profile_details.dart';
+import 'package:delivery_app/screens/splash_screen.dart';
 import 'package:delivery_app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,9 +33,22 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home://ProfileDetails(),
-      //CompletedDeliveryItems(),
-      WelcomeScreen(),
+
+     //ProfileDetails(),
+      // //CompletedDeliveryItems(),
+      // WelcomeScreen(),
+
+      home:
+
+      //LoginPage(),
+
+    LoginScreen(),
+
+     // Dashboard(),
+
+
+      //AnimatedSplashScreen(),
+
 
       //PendingDelivery(),
 

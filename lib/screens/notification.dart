@@ -44,10 +44,10 @@ class _Notifications_EmptyState extends State<Notifications_Empty> {
             SizedBox(height: 40,),
             AppText(
               text: "Don't have any item in the \n notification list",
-              fontSize: 22,
+              fontSize: 22.0,
             ),
             SizedBox(height: 40,),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 30),
+            Padding(padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: getButton(context),),
 
           ],
@@ -59,7 +59,7 @@ class _Notifications_EmptyState extends State<Notifications_Empty> {
     return AppButton(
       label: "Back to Dashboard",
       fontWeight: FontWeight.w700,
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(vertical: 25.0),
       onPressed: () {
         onGetStartedClicked(context);
       },

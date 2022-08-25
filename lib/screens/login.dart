@@ -66,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
+
                           suffixIcon: IconButton(
                               icon: Icon(_isObscure
                                   ? Icons.visibility
@@ -74,21 +75,24 @@ class _LoginPageState extends State<LoginPage> {
                                 setState(() {
                                   _isObscure = !_isObscure;
                                 });
-                              })),
+                              }
+
+                              ),
+                      ),
                     ),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: TextButton(
                           onPressed: () {
                             //Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewScreen()));
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
+                            //Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
                           },
                           child: const Text(
                             'Forgot Password?',
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               color: Color(0xff4c505b),
-                              fontSize: 18,
+                              fontSize: 18.0,
                             ),
                           )),
                     ),
@@ -105,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget Delivery_Service_TextWidget() {
     return AppText(
       text: "ABC Delivery Service",
-      fontSize: 28,
+      fontSize: 28.0,
       fontWeight: FontWeight.w600,
       color: AppColors.primaryColor,
     );
@@ -115,12 +119,16 @@ class _LoginPageState extends State<LoginPage> {
     return AppButton(
       label: "Login",
       fontWeight: FontWeight.w700,
+
       padding: const EdgeInsets.symmetric(vertical: 25),
+
+
+
       onPressed: () {
         // onGetStartedClicked(context);
 
         if(emailController.text != '' && passwordController.text != ''){
-          Navigator.of(context).pushReplacement(new MaterialPageRoute(
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) {
               return const Dashboard();
             },

@@ -1,16 +1,19 @@
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/screens/Earning/earning.dart';
+import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
 import 'package:delivery_app/screens/Total%20Collection/total_collected.dart';
+import 'package:flutter/material.dart';
 
 import '../screens/Pending_Delivery/pending_delivery_main.dart';
 
 class DashBoardModel {
   var name;
-  var imagePath, pageName;
+  var imagePath;
+  Widget pageName;
   int counter;
 
   DashBoardModel(
-      {this.name, this.imagePath, required this.counter, this.pageName});
+      {this.name, this.imagePath, required this.counter, required this.pageName});
 }
 
 var demoDashBoardModel = [

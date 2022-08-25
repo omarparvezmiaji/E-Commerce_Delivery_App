@@ -1,18 +1,36 @@
+import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/my_app_size.dart';
 
-inputField(BuildContext context,
-    {controller, hintText,height, keyboardType, icon, autofillHints}) {
+inputText(
+  BuildContext context, {
+  value,
+  message,
+  text,
+  hintText,
+  initialText,
+  type,
+  prefixIcon,
+  visibility,
+  obsecureText,
+  maxLength,
+  autoFillHints,
+  readOnly,
+  maxLines,
+}) {
   return Container(
-    //decoration
-      padding: const EdgeInsets.all(10),
-      // height:60 ,
-      decoration: BoxDecoration(
-        border:Border.all() ,
+      //decoration
 
-        color: Colors.white,
+       height:60 ,
+
+      decoration: BoxDecoration(
+        border: Border.all(),
+
+       // color: const Color(0xfff6f6f6),
+       color: Colors.white,
         borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
+
         // boxShadow: const [
         //   BoxShadow(
         //     color: Colors.black12,
@@ -25,49 +43,49 @@ inputField(BuildContext context,
         //     blurRadius: 10,
         //   )
         // ]
-        //
+
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //for search
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: controller,
-                  keyboardType: keyboardType,
-                  autofillHints: [autofillHints ],
-                  decoration: InputDecoration(
-                    hintText: hintText,
-                    isCollapsed: true,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    // contentPadding:
-                    //     const EdgeInsets.only(top: 8, bottom: 8, left: 12),
-                  ),
-                ),
-              ),
-              icon != null
-                  ? Container(
-                  padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      // color: Colors.grey,
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            blurRadius: 2,
-                            spreadRadius: 1.5,
-                            offset: const Offset(0, 2.5))
-                      ]
-                  ),
-                  child: icon)
-                  : Container(),
-            ],
-          ),
-        ],
-      ));
+      child: Padding(
+       padding: EdgeInsets.all(5),
+       
+       // padding: const EdgeInsets.only(left: 5.0,right: 5),
+        child: TextFormField(
+
+          controller: value ?? null,
+          validator: (v) {
+            if (v!.isEmpty) {
+              return message != null ? 'Please Enter $message' : null;
+            } else {
+              return null;
+            }
+          },
+          obscureText: obsecureText ?? false,
+          style: const TextStyle(fontSize: 16),
+          keyboardType: type ,
+          textAlignVertical: TextAlignVertical.center,
+          maxLength: maxLength ,
+          maxLines: maxLines ?? 1,
+          autofillHints: [autoFillHints],
+          readOnly: readOnly ?? false,
+          decoration: InputDecoration(
+              counter: const Offstage(),
+              hintText: '$hintText',
+              border: InputBorder.none,
+              filled: true,
+              isCollapsed: true,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              fillColor: AppColors.lightColor,
+              prefixIcon: prefixIcon != null
+                  ? Icon(
+                prefixIcon,
+                size: 20,
+              )
+                  : null,
+              suffixIcon: visibility ?? null,
+              hintStyle: TextStyle(fontSize: 14)),
+        ),
+      ),);
 }
+
+//

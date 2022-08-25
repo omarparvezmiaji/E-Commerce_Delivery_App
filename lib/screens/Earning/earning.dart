@@ -158,7 +158,7 @@ class _EarningState extends State<Earning> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   AppText(
-                                    text: "Orde Code",
+                                    text: "Order Code",
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.darkColor,
                                   ),
@@ -171,7 +171,7 @@ class _EarningState extends State<Earning> {
                               ),
                               Spacer(),
                               AppText(text: '${demototalCollectionModel[index].price}',fontWeight: FontWeight.bold,
-                                color: AppColors.primaryColor,fontSize: 22,)
+                                color: AppColors.primaryColor,fontSize: 22.0,)
                             ],
                           ),
                           Divider(
@@ -179,9 +179,9 @@ class _EarningState extends State<Earning> {
                           ),
                           Row(
                             children: [
-                              AppText(text: '${demototalCollectionModel[index].time}',fontSize: 16,),
+                              AppText(text: '${demototalCollectionModel[index].time}',fontSize: 16.0,),
                               Spacer(),
-                              AppText(text: 'Quantity: ${demototalCollectionModel[index].items}',fontSize: 16,)
+                              AppText(text: 'Quantity: ${demototalCollectionModel[index].items}',fontSize: 16.0,)
                             ],
                           )
                         ],

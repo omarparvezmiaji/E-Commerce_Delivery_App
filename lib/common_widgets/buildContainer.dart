@@ -82,9 +82,9 @@ class BuildContanier extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                AppText(text: contanierTitle,fontSize: 20,color: AppColors.lightColor,),
+                AppText(text: contanierTitle,fontSize:  20.0,color:  AppColors.lightColor),
                 Spacer(),
-                AppText(text: "\$ " + contanierSum,fontSize: 24,color: AppColors.lightColor,fontWeight: FontWeight.bold,),
+                AppText(text: "\$ " + contanierSum,fontSize:  24.0,fontWeight:  FontWeight.bold,color:  AppColors.lightColor),
 
               ],
             )
