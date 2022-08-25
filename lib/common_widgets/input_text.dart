@@ -78,12 +78,13 @@ inputText(
               fillColor: AppColors.lightColor,
               prefixIcon: prefixIcon != null
                   ? Icon(
+               // color: Colors.white70,
                 prefixIcon,
-                size: 20,
+                size: 25,
               )
                   : null,
-              suffixIcon: visibility ?? null,
-              hintStyle: TextStyle(fontSize: 14)),
+              suffixIcon: visibility,
+              hintStyle: const TextStyle(fontSize: 16,fontWeight:FontWeight.w600 )),
         ),
       ),);
 }
