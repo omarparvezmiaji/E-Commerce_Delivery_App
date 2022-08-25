@@ -35,6 +35,10 @@ myAppBar({context, title, page}) {
             //           type: PageTransitionType.rightToLeft));
             // },
 
+           // onPressed: () => Scaffold.of(context).openDrawer(),
+
+
+
           ),
         ),
         title:AppText(text: title,fontSize: 24.0, fontWeight: FontWeight.bold, color: AppColors.lightColor),
@@ -44,11 +48,18 @@ myAppBar({context, title, page}) {
             onPressed: () {
               page == 'Notifications'
                   ? null
-                  : Navigator.push(
-                  context,
-                  PageTransition(
-                      child: const NotificationScreen(),
-                      type: PageTransitionType.rightToLeft));
+
+
+
+
+                  : Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationScreen()));
+              // page == 'Notifications'
+              //     ? null
+              //     : Navigator.push(
+              //     context,
+              //     PageTransition(
+              //         child: const NotificationScreen(),
+              //         type: PageTransitionType.leftToRight));
 
             },
             icon: const Icon(Icons.notifications,size: 30, color: AppColors.lightColor)),

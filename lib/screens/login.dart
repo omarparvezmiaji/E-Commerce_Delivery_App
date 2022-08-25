@@ -2,6 +2,9 @@ import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/controller/api_controller.dart';
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
+
+//import 'package:delivery_app/dashboard/dashboard_screen.dart';
+import 'package:delivery_app/modelClass/api_request/api.dart';
 import 'package:delivery_app/navigator/navigator.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +23,14 @@ class _LoginPageState extends State<LoginPage> {
   //final String login_imagePath = "assets/delivery_man_Login.png";
   bool _isObscure = true;
 
+  ///login
+  var emailController = TextEditingController();
+  var passwordlController = TextEditingController();
+
+
   ///for input field controller
-  var emailController     = TextEditingController();
-  var passwordController  = TextEditingController();
+  // var emailController     = TextEditingController();
+  var passwordController = TextEditingController();
 
 
   @override
@@ -39,16 +47,21 @@ class _LoginPageState extends State<LoginPage> {
                 width: 300,
               ),
               Container(
-                margin: const EdgeInsets.only(left: 35, right: 35,bottom: 40),
+                margin: const EdgeInsets.only(left: 35, right: 35, bottom: 40),
                 child: Column(
                   children: [
                     TextField(
                       controller: emailController,
+
                       style: const TextStyle(color: Colors.black),
+
+                      //    style: TextStyle(color: Colors.black),
+
+
                       decoration: InputDecoration(
                           fillColor: AppColors.fillColor,
                           filled: true,
-                          hintText: "Email",
+                          hintText: "Email or Mobile No",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           )),
@@ -57,27 +70,30 @@ class _LoginPageState extends State<LoginPage> {
                       height: 10,
                     ),
                     TextField(
+
                       controller: passwordController,
+
+                      //   controller: passwordlController,
                       obscureText: _isObscure,
                       decoration: InputDecoration(
-                          fillColor: AppColors.fillColor,
-                          filled: true,
-                          hintText: 'Password',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                        fillColor: AppColors.fillColor,
+                        filled: true,
+                        hintText: 'Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
 
-                          suffixIcon: IconButton(
-                              icon: Icon(_isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                              onPressed: () {
-                                setState(() {
-                                  _isObscure = !_isObscure;
-                                });
-                              }
+                        suffixIcon: IconButton(
+                            icon: Icon(_isObscure
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            }
 
-                              ),
+                        ),
                       ),
                     ),
                     Align(
@@ -96,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           )),
                     ),
-                   
+
                     getButton(context),
                   ],
                 ),
@@ -123,11 +139,11 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.symmetric(vertical: 25),
 
 
-
       onPressed: () {
         // onGetStartedClicked(context);
 
-        if(emailController.text != '' && passwordController.text != ''){
+
+        if (emailController.text != '' && passwordController.text != '') {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) {
               return const Dashboard();
@@ -135,15 +151,16 @@ class _LoginPageState extends State<LoginPage> {
           ));
           login(phone: emailController.text, password: passwordController.text);
         }
-        else if(emailController.text == ''){
+        else if (emailController.text == '') {
           print('Please Enter a Phone Number');
         }
-        else if(passwordController.text == ''){
+        else if (passwordController.text == '') {
           print('Please Enter a Password');
         }
       },
     );
   }
+
   void onGetStartedClicked(BuildContext context) {
     Navigator.of(context).pushReplacement(new MaterialPageRoute(
       builder: (BuildContext context) {
@@ -151,4 +168,16 @@ class _LoginPageState extends State<LoginPage> {
       },
     ));
   }
+
+// Login(context, emailController.text, passwordlController.text);
+
+
+// void onGetStartedClicked(BuildContext context) {
+//   Navigator.of(context).pushReplacement(new MaterialPageRoute(
+//     builder: (BuildContext context) {
+//       return Navigator_Page();
+//     },
+//   ));
+// }
+
 }

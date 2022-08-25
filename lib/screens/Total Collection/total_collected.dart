@@ -162,7 +162,7 @@ class _Total_CollectedState extends State<Total_Collected> {
                                 ],
                               ),
                               Spacer(),
-                              AppText(text: '${demototalCollectionModel[index].price}',fontSize: 22.0,fontWeight:  FontWeight.bold,color:  AppColors.primaryColor),
+                              AppText(text: '\$${demototalCollectionModel[index].price}',fontSize: 22.0,fontWeight:  FontWeight.bold,color:  AppColors.primaryColor),
                             ],
                           ),
                           Divider(

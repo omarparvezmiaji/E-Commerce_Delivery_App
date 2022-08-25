@@ -2,6 +2,7 @@ import 'package:delivery_app/common_widgets/Drawer.dart';
 import 'package:delivery_app/common_widgets/app_banner.dart';
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
+import 'package:delivery_app/common_widgets/my_app_bar.dart';
 import 'package:delivery_app/modelClass/model.dart';
 import 'package:delivery_app/screens/notification.dart';
 import 'package:delivery_app/styles/colors.dart';
@@ -25,11 +26,15 @@ class _DashboardState extends State<Dashboard> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              AppBanner(
-                //leading: Icons.menu,
-                titel_text: "DashBoard",
-                //trailing: Icons.notifications,onPressed: getButton(context),
-              ),
+              // AppBanner(
+              //   //leading: Icons.menu,
+              //   titel_text: "DashBoard",
+              //   //trailing: Icons.notifications,onPressed: getButton(context),
+              // ),
+              myAppBar(
+                  context: context,
+                  title: 'DashBoard',
+                  page: 'DashBoard'),
               padded(SearchWidget()),
               const SizedBox(
                 height: 10,
@@ -58,11 +63,11 @@ class _DashboardState extends State<Dashboard> {
                             border: Border.all(color: AppColors.darkGrey),
                             borderRadius: BorderRadius.circular(15)),
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image(image: AssetImage('${demoDashBoardModel[index].imagePath}'),width: 100,height: 100),
+                              Image(image: AssetImage('${demoDashBoardModel[index].imagePath}'),width: 90,height: 90),
                               AppText(text: demoDashBoardModel[index].name,fontSize:  18.0),
                               Container(
                                 //margin: EdgeInsets.all(15.0),
