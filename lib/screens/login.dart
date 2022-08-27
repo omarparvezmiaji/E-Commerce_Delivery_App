@@ -133,13 +133,13 @@ class _LoginPageState extends State<LoginPage> {
         // onGetStartedClicked(context);
 
         if (emailController.text != '' && passwordlController.text != '') {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (BuildContext context) {
-                return const Dashboard();
-              },
-            ),
-          );
+          // Navigator.of(context).pushReplacement(
+          //   MaterialPageRoute(
+          //     builder: (BuildContext context) {
+          //       return const Dashboard();
+          //     },
+          //   ),
+          // );
 
           //-----> Sending Login credentials <-----
 

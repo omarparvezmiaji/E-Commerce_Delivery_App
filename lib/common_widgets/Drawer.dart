@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import '../screens/ProfilePage.dart';
 import '../screens/login.dart';
+import '../screens/profile_details.dart';
 import '../styles/colors.dart';
 
 myDrawer(BuildContext context) {
@@ -26,7 +27,7 @@ myDrawer(BuildContext context) {
               onTap: () => Navigator.push(
                   context,
                   PageTransition(
-                      child:  ProfilePage(),
+                      child:  ProfileDetails(),
                       type: PageTransitionType.rightToLeft)),
               child: drawerItems(icon: Iconsax.man, title: 'Profile'),
             ),
