@@ -22,6 +22,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen> with Single
   SharedPreferences? prefs;
   var previousLoginChecker;
 
+
   startTime() async {
     var _duration = Duration(milliseconds: 3000);
     return Timer(_duration,loadUserInfo);
@@ -34,6 +35,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen> with Single
   sharedPreferences() async{
     prefs = await SharedPreferences.getInstance();
     previousLoginChecker = (prefs!.getString('token') ?? '');
+    print("For Testing Token:::::::" + previousLoginChecker );
   }
 
   loadUserInfo() async {

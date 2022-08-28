@@ -1,30 +1,25 @@
-import 'dart:convert';
-
+//import 'package:delivery_app/modelClass/api_request/login_model.dart';
+import 'package:delivery_app/modelClass/api_request/login_model2.dart';
 import 'package:delivery_app/navigator/navigator.dart';
-import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'login_model2.dart';
-import 'model4.dart';
 
-//DeliveryManResponse?   smartDeliveryMan;
 var _baseUrl= 'https://appsafwahmart.hotelsetting.com/api/delivery-app';
 
-var x;
+//var x;
 
 
 ///for snackbar Message
-snackBarMessage(BuildContext context, String message){
+snackBarMessage(BuildContext context, String exp){
   return ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-      backgroundColor: AppColors.darkGrey,
+    SnackBar(
+      backgroundColor: AppColors.greyColor,
       content: Text(
-        message,
+        exp,
         style: const TextStyle(
-          fontSize: 20.0,
             color: Colors.white,
             fontWeight: FontWeight.normal
         ),
@@ -35,7 +30,7 @@ snackBarMessage(BuildContext context, String message){
 
 
 ///Login Request
-Future Login(BuildContext context, {email,password})async{
+Future Login(BuildContext context, email,password)async{
   print('Email: $email');
   print('Password: $password');
 
@@ -48,63 +43,44 @@ Future Login(BuildContext context, {email,password})async{
   });
 
   print('Status Code: ${response.statusCode}');
- // print('Body Code:================ ${response.body}');
+  if(response.statusCode == 200){
+    // var status = json.decode(response.body)['status'];
+    loginResponse smartDeliveryMan = loginResponseFromJson(response.body);
 
+    //print("Status: ${smartDeliveryMan.data.user.deliveryMan.name}");
 
+    if(smartDeliveryMan.status == 1){
+     //print("Status: ${smartDeliveryMan.data.user.name}");
 
-  if(response.statusCode == 200) {
-   // final map = jsonDecode(response.body) ;
-    DeliveryManLogin  smartDeliveryMan = deliveryManLoginFromJson(response.body);
-  //  smartDeliveryMan = DeliveryManResponse.fromJson(map);
-
-    print("Status: ${smartDeliveryMan?.status}");
-
-    if (smartDeliveryMan?.status == 1) {
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> Navigator_Page()));
       snackBarMessage(context, 'Login Successful');
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (BuildContext context) {
-            return const Dashboard();
-          },
-        ),
-      );
+
+      String token = await smartDeliveryMan.data.token;
+      String name = await smartDeliveryMan.data.user.deliveryMan.name;
+      String email = await smartDeliveryMan.data.user.email;
+      String phone = await smartDeliveryMan.data.user.phone;
+      String address = await smartDeliveryMan.data.user.deliveryMan.address;
+      String area = await smartDeliveryMan.data.user.deliveryMan.area.name;
+      await prefs.setString('token', token);
+      await prefs.setString('name', name);
+      await prefs.setString('email', email);
+      await prefs.setString('phone', phone);
+      await prefs.setString('address', address);
+      await prefs.setString('area_name', area);
+
+
+      // x = prefs.getString("token");
+      // print("show Tokkkkken: " + x);
     }
     else {
-      snackBarMessage(context, 'Email or Password is incorrect');
+
+      //print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
+
+      snackBarMessage(context,"Mobile No or Password might be wrong");
+
     }
-
-
-    //   print("DeliveryMan Name: ${smartDeliveryMan.data.user.deliveryMan.name}");
-    //   print("DeliveryMan Area Name: ${smartDeliveryMan.data.user.deliveryMan.area.name}");
-    //   print("Status: ${smartDeliveryMan.status}");
-    //
-    //   if(smartDeliveryMan.status == 1){
-    //     print("------ > Token is :  ${smartDeliveryMan.data.token}" );
-    //     String token =  smartDeliveryMan.data.token;
-    //     print("------ > Token is again :  $token" );
-    //     await prefs.setString('token', token);
-    //
-    //     print("DeliveryMan name from User is : ${smartDeliveryMan.data.user.name}");
-    //
-    //   //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Dashboard()));
-    //
-    //
-    //     x = await prefs.getString("token");
-    //
-    //      print("------ >  X  Token is  :  $x" );
-    //
-    //
-    //   }
-    //   else   {
-    //
-    //     print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
-    //
-    //     snackBarMessage(context,"Mobile or Password  wrong");
-    //
-    //   }
-    // }
-    // // else{
-    // //   throw Exception('Failed to Fetch');
-
+  }
+  else{
+    throw Exception('Failed to Fetch');
   }
 }
