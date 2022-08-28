@@ -57,9 +57,9 @@ Future Login(BuildContext context, {email,password})async{
     DeliveryManLogin  smartDeliveryMan = deliveryManLoginFromJson(response.body);
   //  smartDeliveryMan = DeliveryManResponse.fromJson(map);
 
-    print("Status: ${smartDeliveryMan?.status}");
+    print("Status: ${smartDeliveryMan.status}");
 
-    if (smartDeliveryMan?.status == 1) {
+    if (smartDeliveryMan.status == 1) {
       snackBarMessage(context, 'Login Successful');
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -74,37 +74,36 @@ Future Login(BuildContext context, {email,password})async{
     }
 
 
-    //   print("DeliveryMan Name: ${smartDeliveryMan.data.user.deliveryMan.name}");
-    //   print("DeliveryMan Area Name: ${smartDeliveryMan.data.user.deliveryMan.area.name}");
-    //   print("Status: ${smartDeliveryMan.status}");
-    //
-    //   if(smartDeliveryMan.status == 1){
-    //     print("------ > Token is :  ${smartDeliveryMan.data.token}" );
-    //     String token =  smartDeliveryMan.data.token;
-    //     print("------ > Token is again :  $token" );
-    //     await prefs.setString('token', token);
-    //
-    //     print("DeliveryMan name from User is : ${smartDeliveryMan.data.user.name}");
-    //
-    //   //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Dashboard()));
-    //
-    //
-    //     x = await prefs.getString("token");
-    //
-    //      print("------ >  X  Token is  :  $x" );
-    //
-    //
-    //   }
-    //   else   {
-    //
-    //     print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
-    //
-    //     snackBarMessage(context,"Mobile or Password  wrong");
-    //
-    //   }
-    // }
-    // // else{
-    // //   throw Exception('Failed to Fetch');
+      print("DeliveryMan Name: ${smartDeliveryMan.data.user.deliveryMan.name}");
+      print("DeliveryMan Area Name: ${smartDeliveryMan.data.user.deliveryMan.area.name}");
+      print("Status: ${smartDeliveryMan.status}");
+
+      if(smartDeliveryMan.status == 1){
+        print("------ > Token is :  ${smartDeliveryMan.data.token}" );
+        String token =  smartDeliveryMan.data.token;
+        print("------ > Token is again :  $token" );
+        await prefs.setString('token', token);
+
+        print("DeliveryMan name from User is : ${smartDeliveryMan.data.user.name}");
+
+      //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Dashboard()));
+
+
+        x = await prefs.getString("token");
+
+         print("------ >  X  Token is  :  $x" );
+
+
+      }
+      else   {
+
+        print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
+
+        snackBarMessage(context,"Mobile or Password  wrong");
+
+      }
+    }
+    // else{
+    //   throw Exception('Failed to Fetch');
 
   }
-}

@@ -8,10 +8,14 @@ import 'app_text.dart';
 myAppBar({context, title, fontSize, page}) {
   return Container(
     decoration: const BoxDecoration(
+
       image: DecorationImage(
+
           image: AssetImage(
             "assets/banner.jpg",
+
           ),
+
           fit: BoxFit.cover),
     ),
     child: Padding(
