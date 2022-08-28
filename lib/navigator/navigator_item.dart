@@ -19,7 +19,7 @@ class NavigatorItem {
 
 List<NavigatorItem> navigatorItems = [
   NavigatorItem("Dashboard", "assets/icons/dashboard.svg", 0, Dashboard()),
-  NavigatorItem("Complete Delivery", "assets/icons/delivery_complete.svg", 1, Complete_Delivery_Empty()),
-  NavigatorItem("Earning", "assets/icons/earning.svg", 2, Earning()),
+  NavigatorItem("My Delivery", "assets/icons/delivery_complete.svg", 1, Complete_Delivery_Empty()),
+  NavigatorItem("My Earning", "assets/icons/earning.svg", 2, Earning()),
   NavigatorItem("Profile", "assets/icons/account_icon.svg", 3, ProfilePage()),
 ];

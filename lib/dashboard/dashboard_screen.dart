@@ -51,7 +51,12 @@ class _DashboardState extends State<Dashboard> {
                   itemBuilder: (context, index) {
                     return padded(GestureDetector(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => demoDashBoardModel[index].pageName));
+                        if(demoDashBoardModel[index].name != "Complete Delivery")
+                        {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => demoDashBoardModel[index].pageName));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>(){}));
+                        }
+
                       },
                       child: Container(
 
