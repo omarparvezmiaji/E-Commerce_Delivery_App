@@ -24,8 +24,10 @@ import 'package:flutter/material.dart';
 
       style: TextStyle(
         fontSize: fontSize,
-        fontWeight: fontWeight == null? null : FontWeight.normal,
-        color: color == null ? null: color,
+       // fontWeight: fontWeight == null? null : FontWeight.normal,
+        fontWeight: fontWeight ?? FontWeight.normal,
+        //color: color == null ? null: color,
+        color:  color,
       ),
     );
   }

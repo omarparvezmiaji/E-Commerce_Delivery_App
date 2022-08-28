@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../styles/my_app_size.dart';
+SharedPreferences? prefs;
+
 
 detailsOrderCard({ time,color,productName}){
 
@@ -154,10 +157,25 @@ detailsOrderCard({ time,color,productName}){
                   style: ElevatedButton.styleFrom(
                     // padding: const EdgeInsets.only(top: 5, bottom: 5),
                     // elevation: 0,
+                    side: BorderSide(
+                      width: 0.5,
+
+                        style: BorderStyle.solid),
                       shape: RoundedRectangleBorder(
+
+
                           borderRadius: BorderRadius.circular(5)),
-                      primary: const Color(0xffffe2db)),
-                  onPressed: () {},
+                  primary: Colors.white
+
+
+                  ),
+
+                  onPressed: () async{
+                    prefs = await SharedPreferences.getInstance();
+                  var TokenView = prefs!.getString("token");
+
+                  print('------>Token from view Details $TokenView');
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: const [

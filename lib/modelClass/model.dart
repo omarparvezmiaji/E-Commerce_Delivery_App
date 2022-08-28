@@ -1,10 +1,15 @@
+
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
+
 import 'package:delivery_app/navigator/navigator.dart';
+
 import 'package:delivery_app/screens/Earning/earning.dart';
 import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
 import 'package:delivery_app/screens/Total%20Collection/total_collected.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/Pending_Delivery/pending_delivery_main.dart';
+import '../screens/complete_delivery/completed_delivery_items.dart';
 
 class DashBoardModel {
   var name;
@@ -21,7 +26,7 @@ var demoDashBoardModel = [
       name: "Complete Delivery",
       imagePath: "assets/dashboard/complet.png",
       counter: 0,
-      pageName: Navigator_Page()),
+      pageName:  CompletedDeliveryItems()),
   DashBoardModel(
       name: "Pending Delivery",
       imagePath: "assets/dashboard/pending.png",

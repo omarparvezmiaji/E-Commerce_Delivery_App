@@ -1,12 +1,10 @@
-import 'package:delivery_app/common_widgets/app_banner.dart';
-import 'package:delivery_app/common_widgets/app_button.dart';
+import 'package:delivery_app/common_widgets/Drawer.dart';
+
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/common_widgets/my_app_bar.dart';
 import 'package:delivery_app/modelClass/model.dart';
-import 'package:delivery_app/screens/notification.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -18,9 +16,10 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        drawer: myDrawer(context),
+        body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [

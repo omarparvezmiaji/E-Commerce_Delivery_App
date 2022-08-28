@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../common_widgets/Drawer.dart';
 import '../common_widgets/app_custom_buttom.dart';
 import '../common_widgets/my_app_bar.dart';
 
@@ -12,6 +13,7 @@ class ProfileDetails extends StatelessWidget {
     Size _size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        drawer: myDrawer(context),
         body: Column(
           children: [
             myAppBar(context: context, title: 'Profile', page: 'Profile'),

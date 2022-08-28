@@ -1,8 +1,10 @@
+import 'package:delivery_app/common_widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../common_widgets/my_app_bar.dart';
 import '../../modelClass/details_order_card.dart';
 import '../../modelClass/order_card.dart';
+import '../complete_delivery/completed_delivery_items.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
@@ -16,6 +18,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: myDrawer(context),
         body: ListView(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
@@ -46,12 +49,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ],
                 ),
               ),
-
+            //  collectCard(context: context),
             // detailsOrderCard(),
               orderCard( context:context,
                 time: 'Now',
                 color: const Color(0xfffff4f2),
               ),
+
               const Text(
                 '     Yesterday',
                 style: TextStyle(
