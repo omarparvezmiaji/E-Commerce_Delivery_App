@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../common_widgets/Drawer.dart';
 import '../common_widgets/app_custom_buttom.dart';
 import '../common_widgets/my_app_bar.dart';
+import '../styles/colors.dart';
+import 'dashboard/dashboard_screen.dart';
+import 'login.dart';
 
 class ProfileDetails extends StatelessWidget {
   const ProfileDetails({Key? key}) : super(key: key);
@@ -13,10 +17,10 @@ class ProfileDetails extends StatelessWidget {
     Size _size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        drawer: myDrawer(context),
+       // drawer: myDrawer(context),
         body: Column(
           children: [
-            myAppBar(context: context, title: 'Profile', page: 'Profile'),
+          //  myAppBar(context: context, title: 'Profile', page: 'Profile'),
             Expanded(
               child: ListView(
                 shrinkWrap: true,
@@ -121,24 +125,99 @@ class ProfileDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          primary: Colors.white,
-                          elevation: 4,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 70,
-                            vertical: 10,
-                          ),
+
+                      ElevatedButton.icon(
+                        onPressed: () {
+
+                          Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                                        builder: (BuildContext context) {
+                                          return  LoginPage();
+                                        },
+                                      ));
+
+                        },
+                        icon: Icon(
+                          Iconsax.logout,
+                          color: Colors.white,
                         ),
-                        child: const Text(
-                          'Edit Profile',
-                          style: TextStyle(fontSize: 24, color: Colors.black45),
+                        // style: ElevatedButton.styleFrom(
+                        //   shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(50.0),
+                        //   ),
+                        //   primary: Colors.white,
+                        //   elevation: 4,
+                        //   padding: const EdgeInsets.symmetric(
+                        //     horizontal: 70,
+                        //     vertical: 10,
+                        //   ),
+                        // ),
+                        label:   Text(
+                          '  Logout',
+                          style: TextStyle(color: Colors.white),
                         ),
+
                       ),
+
+
+                      // ElevatedButton(
+                      //   onPressed: () {},
+                      //   style: ElevatedButton.styleFrom(
+                      //     shape: RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(50.0),
+                      //     ),
+                      //     primary: Colors.white,
+                      //     elevation: 4,
+                      //     padding: const EdgeInsets.symmetric(
+                      //       horizontal: 70,
+                      //       vertical: 10,
+                      //     ),
+                      //   ),
+                      //   child: const Text(
+                      //     'Edit Profile',
+                      //     style: TextStyle(fontSize: 24, color: Colors.black45),
+                      //   ),
+                      // ),
+
+                      // Padding(
+                      //   padding:
+                      //   const EdgeInsets.only(left: 15, right: 150, top: 20, bottom: 20),
+                      //   child: ElevatedButton(
+                      //       onPressed: () {
+                      //         // Navigator.push(
+                      //         //     context,
+                      //         //     PageTransition(
+                      //         //         child: LoginPage(),
+                      //         //         type: PageTransitionType.rightToLeft));
+                      //
+                      //         Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                      //           builder: (BuildContext context) {
+                      //             return const Dashboard();
+                      //           },
+                      //         ));
+                      //       },
+                      //       style: ElevatedButton.styleFrom(
+                      //           primary: AppColors.buttonColor,
+                      //           //  primary: Colors.red[900],
+                      //           elevation: 5.0,
+                      //           shape: const StadiumBorder(),
+                      //         // fixedSize: const Size(100, 40)
+                      //
+                      //       ),
+                      //       child:
+                      //       Row(
+                      //         mainAxisAlignment: MainAxisAlignment.center,
+                      //         children: const [
+                      //           Icon(
+                      //             Iconsax.logout,
+                      //             color: Colors.white,
+                      //           ),
+                      //           Text(
+                      //             '  Logout',
+                      //             style: TextStyle(color: Colors.white),
+                      //           )
+                      //         ],
+                      //       )),
+                      // ),
                       const SizedBox(
                         height: 40,
                       )

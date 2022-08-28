@@ -27,6 +27,7 @@ myDrawer(BuildContext context) {
               onTap: () => Navigator.push(
                   context,
                   PageTransition(
+                    //  child:  ProfilePage(),
                       child:  ProfileDetails(),
                       type: PageTransitionType.rightToLeft)),
               child: drawerItems(icon: Iconsax.man, title: 'Profile'),
