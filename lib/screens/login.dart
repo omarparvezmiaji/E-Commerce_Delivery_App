@@ -144,11 +144,19 @@ class _LoginPageState extends State<LoginPage> {
           //-----> Sending Login credentials <-----
 
           Login(context, emailController.text, passwordlController.text);
-        } else if (emailController.text == '') {
-          print('Please Enter a Phone Number');
-        } else if (passwordlController.text == '') {
-          print('Please Enter a Password');
         }
+
+        // else if (emailController.text == '') {
+        //   print('Please Enter a Phone Number');
+        // }
+        // else if (passwordlController.text == '') {
+        //   print('Please Enter a Password');
+        // }
+
+        else
+          {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: AppText(text: "Blank Value found")));
+          }
       },
     );
   }
