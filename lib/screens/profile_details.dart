@@ -175,10 +175,10 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           SharedPreferences prefs = await SharedPreferences.getInstance();
                           await prefs.clear();
                           Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                        builder: (BuildContext context) {
-                                          return  LoginPage();
-                                        },
-                                      ));
+                            builder: (BuildContext context) {
+                              return  LoginPage();
+                            },
+                          ));
 
                         },
                         icon: Icon(

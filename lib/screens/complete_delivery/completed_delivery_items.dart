@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 
 //
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-
-import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
-import 'package:delivery_app/styles/my_app_size.dart';
+// import 'package:page_transition/page_transition.dart';
+//
+// import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart';
+// import 'package:delivery_app/styles/my_app_size.dart';
 
 import '../../common_widgets/Drawer.dart';
 import '../../common_widgets/app_text.dart';
 import '../../common_widgets/dropDownList.dart';
 import '../../common_widgets/my_app_bar.dart';
 import '../../modelClass/details_order_card.dart';
-import '../../modelClass/order_card.dart';
+// import '../../modelClass/order_card.dart';
 import '../../styles/colors.dart';
 
 class CompletedDeliveryItems extends StatefulWidget {

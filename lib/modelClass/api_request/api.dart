@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 var _baseUrl= 'https://appsafwahmart.hotelsetting.com/api/delivery-app';
+bool isLoading = false;
 
 //var x;
 
@@ -32,6 +33,9 @@ snackBarMessage(BuildContext context, String exp){
 
 ///Login Request
 Future Login(BuildContext context, email,password)async{
+
+    //isLoading = true;
+
   print('Email: $email');
   print('Password: $password');
 

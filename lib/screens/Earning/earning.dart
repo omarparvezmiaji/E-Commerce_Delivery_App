@@ -1,11 +1,12 @@
-import 'package:delivery_app/common_widgets/app_banner.dart';
+// import 'package:delivery_app/common_widgets/app_banner.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/common_widgets/buildContainer.dart';
 import 'package:delivery_app/common_widgets/dropDownList.dart';
+import 'package:delivery_app/common_widgets/my_app_bar.dart';
 import 'package:delivery_app/modelClass/model.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common_widgets/Drawer.dart';
 // import 'package:flutter/src/widgets/framework.dart';
@@ -73,15 +74,19 @@ class _EarningState extends State<Earning> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: myDrawer(context),
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        drawer: myDrawer(context),
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              AppBanner(
-                titel_text: "Earning",
-              ),
+              // AppBanner(
+              //   titel_text: "Earning",
+              // ),
+              myAppBar(
+                  context: context,
+                  title: 'Earning',
+                  page: 'Earning'),
               padded(Row(
                 children: [
                   AppText(

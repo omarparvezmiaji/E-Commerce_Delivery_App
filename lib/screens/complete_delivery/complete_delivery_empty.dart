@@ -1,6 +1,7 @@
-import 'package:delivery_app/common_widgets/app_banner.dart';
+// import 'package:delivery_app/common_widgets/app_banner.dart';
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
+import 'package:delivery_app/common_widgets/my_app_bar.dart';
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,16 +10,20 @@ class Complete_Delivery_Empty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AppBanner(
-              //leading: Icons.menu,
-              titel_text: "Complete Delivery",
-              //trailing: Icons.notifications, onPressed: ,
-            ),
+            // AppBanner(
+            //   //leading: Icons.menu,
+            //   titel_text: "Complete Delivery",
+            //   //trailing: Icons.notifications, onPressed: ,
+            // ),
+            myAppBar(
+                context: context,
+                title: 'Complete Delivery',
+                page: 'Complete_Delivery_Empty'),
             SizedBox(height: 40,),
             Container(
               //margin: EdgeInsets.all(15.0),

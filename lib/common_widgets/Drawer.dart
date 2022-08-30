@@ -1,12 +1,12 @@
+import 'package:delivery_app/navigator/navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:page_transition/page_transition.dart';
-
-import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
-import '../screens/ProfilePage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../screens/login.dart';
 import '../screens/profile_details.dart';
 import '../styles/colors.dart';
+SharedPreferences? prefs;
 
 myDrawer(BuildContext context) {
   return SafeArea(
@@ -18,7 +18,7 @@ myDrawer(BuildContext context) {
               onTap: () => Navigator.pushReplacement(
                   context,
                   PageTransition(
-                      child: const Dashboard(),
+                      child: const Navigator_Page(),
                       type: PageTransitionType.rightToLeft)),
               child: drawerItems(icon: Iconsax.category5, title: 'Dashboard'),
             ),
@@ -43,12 +43,15 @@ myDrawer(BuildContext context) {
               padding:
               const EdgeInsets.only(left: 15, right: 150, top: 20, bottom: 20),
               child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            child: LoginPage(),
-                            type: PageTransitionType.rightToLeft));
+                  onPressed: () async{
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    await prefs.clear();
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return  LoginPage();
+                      },
+                    ));
+
                   },
                   style: ElevatedButton.styleFrom(
                       primary: AppColors.buttonColor,
