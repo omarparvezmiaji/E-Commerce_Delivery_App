@@ -1,5 +1,6 @@
 //import 'dart:ffi';
 
+import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -89,7 +90,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                               GestureDetector(
                                 onTap: () {},
                                 child: const CircleAvatar(
-                                  backgroundColor: Color(0xff2C4CEC),
+                                  backgroundColor: AppColors.primaryColor,
                                   radius: 58,
                                   child: CircleAvatar(
                                     backgroundColor: Colors.white,
@@ -170,13 +171,14 @@ class _ProfileDetailsState extends State<ProfileDetails> {
 
 
                       ElevatedButton.icon(
-                        onPressed: () {
-
-                          Navigator.of(context).pushReplacement(new MaterialPageRoute(
-                                        builder: (BuildContext context) {
-                                          return  LoginPage();
-                                        },
-                                      ));
+                        onPressed: () async{
+                          SharedPreferences prefs = await SharedPreferences.getInstance();
+                          await prefs.clear();
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return  LoginPage();
+                            },
+                          ));
 
                         },
                         icon: Icon(

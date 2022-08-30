@@ -1,15 +1,13 @@
 import 'package:delivery_app/common_widgets/app_button.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
-
-//import 'package:delivery_app/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/modelClass/api_request/api.dart';
-import 'package:delivery_app/navigator/navigator.dart';
-import 'package:delivery_app/screens/login_screen.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
-
-import 'forgot_password.dart';
+// import 'package:delivery_app/navigator/navigator.dart';
+// import 'package:delivery_app/screens/login_screen.dart';
+//import 'package:delivery_app/dashboard/dashboard_screen.dart';
+// import 'forgot_password.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -21,6 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //final String login_imagePath = "assets/delivery_man_Login.png";
   bool _isObscure = true;
+
 
   ///login
   var emailController = TextEditingController();
@@ -144,11 +143,19 @@ class _LoginPageState extends State<LoginPage> {
           //-----> Sending Login credentials <-----
 
           Login(context, emailController.text, passwordlController.text);
-        } else if (emailController.text == '') {
-          print('Please Enter a Phone Number');
-        } else if (passwordlController.text == '') {
-          print('Please Enter a Password');
         }
+
+        // else if (emailController.text == '') {
+        //   print('Please Enter a Phone Number');
+        // }
+        // else if (passwordlController.text == '') {
+        //   print('Please Enter a Password');
+        // }
+
+        else
+          {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: AppText(text: "Blank Value found")));
+          }
       },
     );
   }

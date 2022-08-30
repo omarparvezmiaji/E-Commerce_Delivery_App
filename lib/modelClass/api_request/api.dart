@@ -1,3 +1,8 @@
+
+
+//import 'package:delivery_app/modelClass/api_request/login_model.dart';
+import 'package:delivery_app/common_widgets/app_text.dart';
+
 import 'package:delivery_app/modelClass/api_request/login_model2.dart';
 import 'package:delivery_app/modelClass/api_request/order_model.dart';
 import 'package:delivery_app/navigator/navigator.dart';
@@ -8,7 +13,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 var _baseUrl= 'https://appsafwahmart.hotelsetting.com/api/delivery-app';
+
 var imageBaseUrl= 'https://appsafwahmart.hotelsetting.com';
+
+bool isLoading = false;
+
 
 var x;
 
@@ -32,6 +41,9 @@ snackBarMessage(BuildContext context, String exp){
 
 ///Login Request
 Future Login(BuildContext context, email,password)async{
+
+    //isLoading = true;
+
   print('Email: $email');
   print('Password: $password');
 
@@ -80,7 +92,10 @@ Future Login(BuildContext context, email,password)async{
     }
     else {
 
-      //print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
+      print("Shooooooooow Statuuuuuuuus: ${smartDeliveryMan.status}");
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: AppText(text: "Mobile No or Password might be wrong")));
+
 
 
     //  print("DeliveryMan Name: ${smartDeliveryMan.data.user.deliveryMan.name}");

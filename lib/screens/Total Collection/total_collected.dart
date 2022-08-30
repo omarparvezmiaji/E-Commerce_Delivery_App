@@ -2,6 +2,7 @@ import 'package:delivery_app/common_widgets/app_banner.dart';
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/common_widgets/buildContainer.dart';
 import 'package:delivery_app/common_widgets/dropDownList.dart';
+import 'package:delivery_app/common_widgets/my_app_bar.dart';
 import 'package:delivery_app/modelClass/model.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -77,15 +78,19 @@ class _Total_CollectedState extends State<Total_Collected> {
   Widget build(BuildContext context) {
 
 
-    return Scaffold(
-      drawer: myDrawer(context),
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        drawer: myDrawer(context),
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              AppBanner(
-                titel_text: "Total Collected",
-              ),
+              // AppBanner(
+              //   titel_text: "Total Collected",
+              // ),
+              myAppBar(
+                  context: context,
+                  title: 'Total Collected',
+                  page: 'Total_Collected'),
               padded(Row(
                 children: [
                   AppText(text: "Last Week Collected",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.darkColor),
