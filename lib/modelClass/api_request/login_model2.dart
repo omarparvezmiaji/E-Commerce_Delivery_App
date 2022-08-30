@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final deliveryManLogin = deliveryManLoginFromJson(jsonString);
+//     final welcome = welcomeFromJson(jsonString);
 
 import 'dart:convert';
 
-DeliveryManLogin deliveryManLoginFromJson(String str) => DeliveryManLogin.fromJson(json.decode(str));
+loginResponse loginResponseFromJson(String str) => loginResponse.fromJson(json.decode(str));
 
-String deliveryManLoginToJson(DeliveryManLogin data) => json.encode(data.toJson());
+String loginResponseToJson(loginResponse data) => json.encode(data.toJson());
 
-class DeliveryManLogin {
-  DeliveryManLogin({
+class loginResponse {
+  loginResponse({
     required this.data,
     this.message,
     this.status,
@@ -19,7 +19,7 @@ class DeliveryManLogin {
   var message;
   var status;
 
-  factory DeliveryManLogin.fromJson(Map<String, dynamic> json) => DeliveryManLogin(
+  factory loginResponse.fromJson(Map<String, dynamic> json) => loginResponse(
     data: Data.fromJson(json["data"]),
     message: json["message"],
     status: json["status"],
@@ -76,23 +76,23 @@ class User {
   });
 
   var id;
-  dynamic companyId;
-  dynamic warehouseId;
+  var companyId;
+  var warehouseId;
   var type;
   var name;
-  dynamic username;
+  var username;
   var email;
   var phone;
-  dynamic socialProvider;
-  dynamic emailVerifiedAt;
-  dynamic image;
+  var socialProvider;
+  var emailVerifiedAt;
+  var image;
   var status;
   var createdAt;
   var updatedAt;
-  dynamic apiToken;
-  dynamic passwordResetToken;
-  dynamic employeeFullId;
-  dynamic deviceToken;
+  var apiToken;
+  var passwordResetToken;
+  var employeeFullId;
+  var deviceToken;
   DeliveryMan deliveryMan;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -164,14 +164,14 @@ class DeliveryMan {
   var userId;
   var districtId;
   var areaId;
- var deliveryType;
- var name;
- var phone;
- var email;
- var address;
+  var deliveryType;
+  var name;
+  var phone;
+  var email;
+  var address;
   var status;
   var createdBy;
-  dynamic updatedBy;
+  var updatedBy;
   var createdAt;
   var updatedAt;
   Area district;
@@ -222,7 +222,7 @@ class Area {
     this.name,
   });
 
- var id;
+  var id;
   var name;
 
   factory Area.fromJson(Map<String, dynamic> json) => Area(

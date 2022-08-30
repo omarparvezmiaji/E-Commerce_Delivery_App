@@ -1,3 +1,4 @@
+import 'package:delivery_app/modelClass/card2.dart';
 import 'package:flutter/cupertino.dart';
 
 //
@@ -56,7 +57,7 @@ class _CompletedDeliveryItemsState extends State<CompletedDeliveryItems> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: 12,
                     itemBuilder: (context, index) {
-                      return detailsOrderCard();
+                      return detailsOrderCard2();
                     }),
               ),
             ])));

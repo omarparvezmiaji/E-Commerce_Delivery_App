@@ -1,20 +1,63 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:iconsax/iconsax.dart';
+//import 'dart:ffi';
 
-import '../common_widgets/Drawer.dart';
-import '../common_widgets/app_custom_buttom.dart';
-import '../common_widgets/my_app_bar.dart';
-import '../styles/colors.dart';
-import 'dashboard/dashboard_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+// import '../common_widgets/Drawer.dart';
+// import '../common_widgets/app_custom_buttom.dart';
+// import '../common_widgets/my_app_bar.dart';
+// import '../styles/colors.dart';
+// import 'dashboard/dashboard_screen.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'login.dart';
 
-class ProfileDetails extends StatelessWidget {
+class ProfileDetails extends StatefulWidget {
   const ProfileDetails({Key? key}) : super(key: key);
 
   @override
+  State<ProfileDetails> createState() => _ProfileDetailsState();
+}
+
+class _ProfileDetailsState extends State<ProfileDetails> {
+
+  SharedPreferences? prefs;
+  var name;
+  var email;
+  var phone;
+  var address;
+  var area;
+
+  sharedPreferences() async{
+    prefs = await SharedPreferences.getInstance();
+    setState((){
+      name= prefs!.getString('name').toString() ;
+      email= prefs!.getString('email').toString();
+      phone= prefs!.getString('phone').toString();
+      address= prefs!.getString('address').toString();
+      area= prefs!.getString('area_name').toString();
+    });
+    //area= prefs!.getString('Aname').toString();
+    print("For Testing Name:::::::" + name );
+    print("For Testing Email:::::::" + email );
+    print("For Testing Email:::::::" + phone );
+    print("For Testing Email:::::::" + address );
+    print("For Testing Email:::::::" + area );
+  }
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    sharedPreferences();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
+    var _size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
        // drawer: myDrawer(context),
@@ -27,7 +70,7 @@ class ProfileDetails extends StatelessWidget {
                 children: [
                   SizedBox(
                     // height: _size.height,
-                    height: _size.height * 0.84,
+                    height: _size.height * 0.77,
                     child: Stack(
                       alignment: Alignment.topCenter,
                       children: [
@@ -63,18 +106,18 @@ class ProfileDetails extends StatelessWidget {
                               const SizedBox(
                                 height: 2,
                               ),
-                              const Text(
-                                'Dev',
+                               Text(
+                                name ?? '',
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
-                              const SizedBox(
+                               SizedBox(
                                 height: 3,
                               ),
-                              const Text(
-                                'SmartDev@gmail.com',
+                               Text(
+                                email ?? '',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -109,10 +152,10 @@ class ProfileDetails extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 20, top: 50),
                               child: Column(
                                 children: [
-                                  buildProfileInfo("Mobile", "01686985487"),
-                                  buildProfileInfo("Tel", "0123456789"),
-                                  buildProfileInfo("Address", "Banani, Dhaka"),
-                                  buildProfileInfo("Postal code", "1234"),
+                                  buildProfileInfo("Mobile", phone ?? ''),
+                                  //buildProfileInfo("Tel", "0123456789"),
+                                  buildProfileInfo("Address", address ?? ''),
+                                  buildProfileInfo("Delivery Area", area ?? ''),
                                 ],
                               ),
                             ),
@@ -267,5 +310,6 @@ class ProfileDetails extends StatelessWidget {
       ],
     );
   }
+
 }
 

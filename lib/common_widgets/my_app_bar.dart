@@ -18,50 +18,47 @@ myAppBar({context, title, fontSize, page}) {
 
           fit: BoxFit.cover),
     ),
-    child: Padding(
-      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-      child: ListTile(
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(
-              Icons.menu,
-              size: 35,
-              color: Colors.white,
-            ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-            // onPressed: (){
-            //
-            //   Navigator.push(
-            //       context,
-            //       PageTransition(
-            //           child:  ProfilePage(),
-            //           type: PageTransitionType.rightToLeft));
-            // },
+    child: ListTile(
+      leading: Builder(
+        builder: (context) => IconButton(
+          icon: const Icon(
+            Icons.menu,
+            size: 35,
+            color: Colors.white,
           ),
+          onPressed: () => Scaffold.of(context).openDrawer(),
+          // onPressed: (){
+          //
+          //   Navigator.push(
+          //       context,
+          //       PageTransition(
+          //           child:  ProfilePage(),
+          //           type: PageTransitionType.rightToLeft));
+          // },
         ),
-        title: AppText(
-            text: title,
-            fontSize: fontSize ?? 20.0,
-            fontWeight: FontWeight.w500,
-            color: AppColors.lightColor),
-
-        trailing: IconButton(
-            onPressed: () {
-              page == 'Notifications'
-                  ? null
-                  : Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => NotificationScreen()));
-              // page == 'Notifications'
-              //     ? null
-              //     : Navigator.push(
-              //     context,
-              //     PageTransition(
-              //         child: const NotificationScreen(),
-              //         type: PageTransitionType.leftToRight));
-            },
-            icon: const Icon(Icons.notification_add,
-                size: 30, color: AppColors.lightColor)),
       ),
+      title: AppText(
+          text: title,
+          fontSize: fontSize ?? 20.0,
+          fontWeight: FontWeight.w500,
+          color: AppColors.lightColor),
+
+      trailing: IconButton(
+          onPressed: () {
+            page == 'Notifications'
+                ? null
+                : Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => NotificationScreen()));
+            // page == 'Notifications'
+            //     ? null
+            //     : Navigator.push(
+            //     context,
+            //     PageTransition(
+            //         child: const NotificationScreen(),
+            //         type: PageTransitionType.leftToRight));
+          },
+          icon: const Icon(Icons.notification_add,
+              size: 30, color: AppColors.lightColor)),
     ),
   );
 }

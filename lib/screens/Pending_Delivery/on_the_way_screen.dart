@@ -1,3 +1,4 @@
+import 'package:delivery_app/modelClass/card2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _OnTheWayScreenState extends State<OnTheWayScreen> {
             physics: const BouncingScrollPhysics(),
             itemCount: 12,
             itemBuilder: (context, index) {
-              return detailsOrderCard();
+              return detailsOrderCard2();
             })
 
 

@@ -1,3 +1,4 @@
+import 'package:delivery_app/modelClass/card2.dart';
 import 'package:flutter/material.dart';
 
 import '../../modelClass/details_order_card.dart';
@@ -21,8 +22,11 @@ class _PickedScreenState extends State<PickedScreen> {
            physics: const BouncingScrollPhysics(),
            itemCount: 4,
            itemBuilder: (context, index) {
-             return detailsOrderCard();
+             return detailsOrderCard2();
            }),
     );
   }
 }
+//
+
+
