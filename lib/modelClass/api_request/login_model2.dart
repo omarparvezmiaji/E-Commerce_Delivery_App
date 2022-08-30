@@ -19,11 +19,15 @@ class loginResponse {
   var message;
   var status;
 
-  factory loginResponse.fromJson(Map<String, dynamic> json) => loginResponse(
-    data: Data.fromJson(json["data"]),
-    message: json["message"],
-    status: json["status"],
-  );
+  factory loginResponse.fromJson(Map<String, dynamic> json) {
+    return loginResponse(
+        message: json['message'],
+        data: json['data'],
+        status: json['status']);
+  }
+    // data: Data.fromJson(json["data"]),
+    // message: json["message"],
+    // status: json["status"],
 
   Map<String, dynamic> toJson() => {
     "data": data.toJson(),
