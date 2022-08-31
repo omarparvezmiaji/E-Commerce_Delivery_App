@@ -42,11 +42,11 @@ class MyApp extends StatelessWidget {
       home:
 
 
-      // AnimatedSplashScreen(),
+      AnimatedSplashScreen(),
 
       //CompletedDeliveryItems(),
 
-     LoginPage(),
+     //LoginPage(),
 
 //   LoginScreen(),
 

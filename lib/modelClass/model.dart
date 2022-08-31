@@ -8,6 +8,7 @@ import 'package:delivery_app/screens/Pending_Delivery/pending_delivery_main.dart
 import 'package:delivery_app/screens/Total%20Collection/total_collected.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/Pending_Delivery/assigned_screen.dart';
 import '../screens/Pending_Delivery/pending_delivery_main.dart';
 import '../screens/complete_delivery/completed_delivery_items.dart';
 
@@ -31,7 +32,8 @@ var demoDashBoardModel = [
       name: "Pending Delivery",
       imagePath: "assets/dashboard/pending.png",
       counter: 0,
-      pageName: PendingDelivery()),
+      pageName: AssignedScreen()),
+     // pageName: PendingDelivery()),
   DashBoardModel(
       name: "Total Collected",
       imagePath: "assets/dashboard/collection.png",

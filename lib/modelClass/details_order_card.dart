@@ -3,20 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/Pending_Delivery/view_details.dart';
+import '../styles/colors.dart';
 import '../styles/my_app_size.dart';
 
 SharedPreferences? prefs;
 
-detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInvoice, orderData,orderNo,totalQuantity,subtotal,createdAt,productOrQuantity}) {
+detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInvoice, orderData,orderNo,totalQuantity,subtotal,createdAt,productOrQuantity,mapOrReturn,viewOrInvoice}) {
   // print('${orderData.product.image}');
   // print("Name is ${orderData.product.name}");
   // print("Sku is ${orderData.product.slug}");
   // print("Sku is ${orderData.product.thumbnailImage}");
 
-  return Container(
+  return
+
+    Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
+          border: Border.all(color: AppColors.darkColor, width: 0),
+
           color: color ?? Colors.white,
           // color: const Color(0xfffff4f2),
           borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
@@ -34,47 +39,114 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
           ]),
       child: Column(
         children: [
-          Row(
-            children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
-                   child:
-                  //      orderData.product.thumbnailImage != '' && orderData.product.thumbnailImage != null ?
-                  //  Image.network(
-                  //   '$imageBaseUrl/${orderData.product.thumbnailImage}',
-                  //   height: 80,
-                  //   width: 80,
-                  //   fit: BoxFit.fill,
-                  // ) :
-                  Image.asset('assets/images/burger1.jpg',height: 80,width: 80,fit: BoxFit.fill,)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      // padding: const EdgeInsets.only(top: 5, bottom: 5),
+                      // elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        primary: const Color(0xffffe2db)),
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(
+                          Icons.navigation,
+                          color: Colors.red,
+                        ),
+                        Text(
+                          'Return Order',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.red,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        )
+                      ],
+                    )),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    // padding: const EdgeInsets.only(top: 5, bottom: 5),
+                    // elevation: 0,
+                      side: BorderSide(
+                          width: 0.5, style: BorderStyle.solid),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      primary: Colors.white),
+                  onPressed: () {
+                    //
+                    // prefs = await SharedPreferences.getInstance();
+                    // var TokenView = prefs!.getString("token");
+                    //
+                    // print('------>Token from view Details $TokenView');
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Icon(
+                        Icons.check_box,
+                        color: Colors.green,
+                      ),
+                      Text(
+                        ' Completed',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      )
+                    ],
                   ),
-              const SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        orderData.product.name,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      Text(
-                        orderData.product.category.name ?? " ",
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w500, color: Colors.grey),
-                      ),
-                      //  time ??
-                      Text(
-                       createdAt,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w500, color: Colors.grey),
-                      ),
-                    ]),
-              )
-            ],
+                ),
+              ],
+            ),
           ),
+          // Row(
+          //   children: [
+          //     ClipRRect(
+          //         borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
+          //          child:
+          //         //      orderData.product.thumbnailImage != '' && orderData.product.thumbnailImage != null ?
+          //         //  Image.network(
+          //         //   '$imageBaseUrl/${orderData.product.thumbnailImage}',
+          //         //   height: 80,
+          //         //   width: 80,
+          //         //   fit: BoxFit.fill,
+          //         // ) :
+          //         Image.asset('assets/images/saraBosorLogo.png',height: 80,width: 80,fit: BoxFit.cover,)
+          //         ),
+          //     const SizedBox(
+          //       width: 8,
+          //     ),
+          //     Expanded(
+          //       child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             Text(
+          //               orderData.product.name,
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.bold, fontSize: 16),
+          //             ),
+          //             Text(
+          //               orderData.product.category.name ?? " ",
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.w500, color: Colors.grey),
+          //             ),
+          //             //  time ??
+          //             Text(
+          //              createdAt,
+          //               style: const TextStyle(
+          //                   fontWeight: FontWeight.w500, color: Colors.grey),
+          //             ),
+          //           ]),
+          //     )
+          //   ],
+          // ),
           Divider(),
           Padding(
             padding: const EdgeInsets.only(right: 10.0, top: 10, bottom: 2),
@@ -92,9 +164,9 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
                 //     height: 40.0,
                 //     width: 150.0,
                 //     text: "Botton",
-                //      color: Color(0xff0ce0ff)),
+                //     color: Color(0xff0ce0ff)),
                 Text(
-                 "\$ ${double.parse(subtotal).toStringAsFixed(2)}" ,softWrap: true,
+                 "৳ ${double.parse(subtotal).toStringAsFixed(2)}" ,
                   style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
@@ -145,11 +217,12 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: const [
                       Icon(
-                        Icons.navigation,
+                        Icons.location_on_outlined,
+                       // Icons.location_on_outlined,
                         color: Colors.red,
                       ),
                       Text(
-                        'View Map',
+                        ' View Map',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.red,
@@ -176,14 +249,15 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
 
                 },
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const  [
                     Icon(
                       Icons.visibility,
                       color: Colors.black,
                     ),
+
                     Text(
-                      ' View Details',
+                      ' View Invoice',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -194,7 +268,7 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
                 ),
               ),
             ],
-          )
+          ),
         ],
       ));
 }

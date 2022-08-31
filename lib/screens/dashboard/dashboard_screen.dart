@@ -22,6 +22,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         drawer: myDrawer(context),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,

@@ -165,7 +165,7 @@ class _Total_CollectedState extends State<Total_Collected> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  AppText(text: "Orde Code",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.darkColor),
+                                  AppText(text: "Order Code",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.darkColor),
                                   AppText(text: "${demototalCollectionModel[index].orderCode}",fontSize:  18.0,fontWeight:  FontWeight.bold,color:  AppColors.primaryColor),
                                 ],
                               ),

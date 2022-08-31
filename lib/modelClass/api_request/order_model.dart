@@ -11,10 +11,11 @@ String orderResponseToJson(OrderResponse data) => json.encode(data.toJson());
 
 class OrderResponse {
   OrderResponse({
-    required this.data,
+     required this.data,
     this.message,
     this.status,
   });
+
 
   List<Data> data;
   var message;

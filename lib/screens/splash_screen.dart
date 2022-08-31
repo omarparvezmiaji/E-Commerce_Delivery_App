@@ -40,8 +40,8 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen> with Single
 
   loadUserInfo() async {
     previousLoginChecker != "" && previousLoginChecker != null ?
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>Navigator_Page())) :
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Navigator_Page()), (route) => false) :
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
   }
 
 

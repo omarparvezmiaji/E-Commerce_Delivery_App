@@ -1,5 +1,4 @@
 import 'package:delivery_app/common_widgets/Drawer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../common_widgets/my_app_bar.dart';
@@ -19,15 +18,13 @@ class ViewDetailsOrder extends StatefulWidget {
 }
 
 class _ViewDetailsOrderState extends State<ViewDetailsOrder> {
-
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         drawer: myDrawer(context),
         body: Column(
-         // mainAxisAlignment:MainAxisAlignment.center ,
+          // mainAxisAlignment:MainAxisAlignment.center ,
           children: [
             myAppBar(
               context: context,
@@ -39,13 +36,13 @@ class _ViewDetailsOrderState extends State<ViewDetailsOrder> {
                 padding: const EdgeInsets.all(10),
                 margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-
-
-                    color:  Colors.white,
-                   // color: color ?? Colors.white,
+                    color: Colors.white,
+                    // color: color ?? Colors.white,
                     // color: const Color(0xfffff4f2),
-                   // borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
-                    borderRadius: BorderRadius.only(bottomRight:Radius.circular(AppSize.borderRadiusSize),bottomLeft: Radius.circular(AppSize.borderRadiusSize)),
+                    // borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(AppSize.borderRadiusSize),
+                        bottomLeft: Radius.circular(AppSize.borderRadiusSize)),
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
@@ -165,42 +162,39 @@ class _ViewDetailsOrderState extends State<ViewDetailsOrder> {
                       children: [
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              // padding: const EdgeInsets.only(top: 5, bottom: 5),
-                              // elevation: 0,
+                                // padding: const EdgeInsets.only(top: 5, bottom: 5),
+                                // elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5)),
                                 primary: const Color(0xffffe2db)),
                             onPressed: () {},
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Icon(Icons.navigation,color: Colors.red,),
-                                Text('Return Order',style: TextStyle(
-                                  fontSize: 16,color: Colors.red,fontWeight: FontWeight.w900,
-                                ),)
-
+                              children: const [
+                                Icon(
+                                  Icons.navigation,
+                                  color: Colors.red,
+                                ),
+                                Text(
+                                  'Return Order',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                )
                               ],
-                            )
-                        ),
+                            )),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            // padding: const EdgeInsets.only(top: 5, bottom: 5),
-                            // elevation: 0,
+                              // padding: const EdgeInsets.only(top: 5, bottom: 5),
+                              // elevation: 0,
                               side: BorderSide(
-                                  width: 0.5,
-
-                                  style: BorderStyle.solid),
+                                  width: 0.5, style: BorderStyle.solid),
                               shape: RoundedRectangleBorder(
-
-
                                   borderRadius: BorderRadius.circular(5)),
-                              primary: Colors.white
-
-
-                          ),
-
+                              primary: Colors.white),
                           onPressed: () {
-
                             //
                             // prefs = await SharedPreferences.getInstance();
                             // var TokenView = prefs!.getString("token");
@@ -210,18 +204,25 @@ class _ViewDetailsOrderState extends State<ViewDetailsOrder> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: const [
-                              Icon(Icons.check_box,color: Colors.green,),
-                              Text(' Completed',style: TextStyle(
-                                fontSize: 16,color: Colors.black,fontWeight: FontWeight.w900,
-                              ),)
-
+                              Icon(
+                                Icons.check_box,
+                                color: Colors.green,
+                              ),
+                              Text(
+                                ' Completed',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              )
                             ],
-                          ),),
+                          ),
+                        ),
                       ],
                     )
                   ],
-                )) ,
-
+                )),
 
             // ListView.builder(
             //     shrinkWrap: true,
@@ -246,78 +247,140 @@ class _ViewDetailsOrderState extends State<ViewDetailsOrder> {
               child: Center(
                 child: SingleChildScrollView(
                   child: FutureBuilder(
-                      future: getOrder(),
-                      builder: (
-                        BuildContext context,
-                        AsyncSnapshot snapshot,
-                      ) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return Center(child: const CircularProgressIndicator());
+                    future: getOrder(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Padding(
+                          padding: EdgeInsets.all(28.0),
+                          child: Center(child: CircularProgressIndicator()),
+                        );
+                      } else if (snapshot.connectionState ==
+                              ConnectionState.active ||
+                          snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasError) {
+                          return const Center(
+                              child: Text('Error Occurs',
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 18)));
+                        } else if (snapshot.hasData) {
+                          return ListView.builder(
+                              itemCount: snapshot.data.length,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                //   var data = snapshot.data[index]["orderDetails"][index].product.name;
+                                //  var data = snapshot.data[index]["orderDetails"][index]['product'];
+                                var data = snapshot.data[index];
+                                // print('Order -------- ${data.orderNo}');
+                                var orderNo = data.orderNo;
+                                var totalQuantity = data.totalQuantity;
+                                var subtotal = data.subtotal;
+                                // var createdAt = data.createdAt;
+                                DateTime localDate =
+                                    DateTime.parse(data.createdAt.toString())
+                                        .toLocal();
+
+                                return ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: ClampingScrollPhysics(),
+                                    // itemCount:1 ,
+                                    itemCount: data.orderDetails.length,
+                                    itemBuilder: (BuildContext context, int i) {
+                                      var orderData = data.orderDetails[i];
+                                      return detailsOrderCard(
+                                        context: context,
+                                        orderData: orderData,
+                                        orderNo:
+                                            orderData.product.id.toString(),
+                                        totalQuantity: orderData.quantity,
+                                        createdAt: localDate.toString(),
+                                        subtotal: orderData.totalAmount,
+                                        productOrQuantity: "Quantity",
+                                      );
+                                    });
+                              });
                         } else {
-                          return snapshot.hasData
-                              ? ListView.builder(
-                                  itemCount: snapshot.data.length,
-                                  shrinkWrap: true,
-                                   physics: NeverScrollableScrollPhysics(),
-                                  itemBuilder: (BuildContext context, int index) {
-                                    //   var data = snapshot.data[index]["orderDetails"][index].product.name;
-                                    //  var data = snapshot.data[index]["orderDetails"][index]['product'];
-                                    var data = snapshot.data[index];
-                                    // print('Order -------- ${data.orderNo}');
-                                    var orderNo = data.orderNo;
-                                    var totalQuantity = data.totalQuantity;
-                                    var subtotal = data.subtotal;
-                                    // var createdAt = data.createdAt;
-                                    DateTime localDate =
-                                        DateTime.parse(data.createdAt.toString())
-                                            .toLocal();
-
-                                    return ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: ClampingScrollPhysics(),
-                                        // itemCount:1 ,
-                                        itemCount: data.orderDetails.length,
-                                        itemBuilder: (BuildContext context, int i) {
-                                          var orderData = data.orderDetails[i];
-                                          return detailsOrderCard(
-                                            context: context,
-                                            orderData: orderData,
-                                            orderNo: orderData.product.id.toString(),
-                                            totalQuantity:orderData.quantity,
-                                            createdAt: localDate.toString(),
-                                            subtotal: orderData.totalAmount,
-                                             productOrQuantity: "Quantity",
-
-                                          );
-                                        });
-                                  })
-                              : Text('');
+                          return const Text('Empty data');
                         }
-                        // else if (snapshot.connectionState == ConnectionState.active
-                        //     || snapshot.connectionState == ConnectionState.done) {
-                        //   return const Text('Empty data');
-                        // }
+                      } else {
+                        return Text('State: ${snapshot.connectionState}');
+                      }
+                    },
+                  ),
 
-                        // Visibility(
-                        //   visible: isLoaded,
-                        //   replacement: const Center(
-                        //     child: CircularProgressIndicator(),
-                        //   ),
-                        //   child: ListView.builder(
-                        //       physics: const BouncingScrollPhysics(),
-                        //       shrinkWrap: true,
-                        //       // itemCount: 5,
-                        //       itemCount: orderData?.data.length,
-                        //       itemBuilder: (context, index) {
-                        //         final order = orderData?.data[index];
-                        //
-                        //         return Center(
-                        //             child:
-                        //                 Text("Status Code is ${order!.orderDetails[]}"));
-                        //         // return detailsOrderCard();
-                        //       }),
-                        // ),
-                      }),
+                  // FutureBuilder(
+                  //     future: getOrder(),
+                  //     builder: (
+                  //       BuildContext context,
+                  //       AsyncSnapshot snapshot,
+                  //     ) {
+                  //       if (snapshot.connectionState == ConnectionState.waiting) {
+                  //         return const Center(child: CircularProgressIndicator());
+                  //       } else {
+                  //         return snapshot.hasData
+                  //             ? ListView.builder(
+                  //                 itemCount: snapshot.data.length,
+                  //                 shrinkWrap: true,
+                  //                  physics: NeverScrollableScrollPhysics(),
+                  //                 itemBuilder: (BuildContext context, int index) {
+                  //                   //   var data = snapshot.data[index]["orderDetails"][index].product.name;
+                  //                   //  var data = snapshot.data[index]["orderDetails"][index]['product'];
+                  //                   var data = snapshot.data[index];
+                  //                   // print('Order -------- ${data.orderNo}');
+                  //                   var orderNo = data.orderNo;
+                  //                   var totalQuantity = data.totalQuantity;
+                  //                   var subtotal = data.subtotal;
+                  //                   // var createdAt = data.createdAt;
+                  //                   DateTime localDate =
+                  //                       DateTime.parse(data.createdAt.toString())
+                  //                           .toLocal();
+                  //
+                  //                   return ListView.builder(
+                  //                       shrinkWrap: true,
+                  //                       physics: ClampingScrollPhysics(),
+                  //                       // itemCount:1 ,
+                  //                       itemCount: data.orderDetails.length,
+                  //                       itemBuilder: (BuildContext context, int i) {
+                  //                         var orderData = data.orderDetails[i];
+                  //                         return detailsOrderCard(
+                  //                           context: context,
+                  //                           orderData: orderData,
+                  //                           orderNo: orderData.product.id.toString(),
+                  //                           totalQuantity:orderData.quantity,
+                  //                           createdAt: localDate.toString(),
+                  //                           subtotal: orderData.totalAmount,
+                  //                            productOrQuantity: "Quantity",
+                  //
+                  //                         );
+                  //                       });
+                  //                 })
+                  //             : Text('');
+                  //       }
+                  //       // else if (snapshot.connectionState == ConnectionState.active
+                  //       //     || snapshot.connectionState == ConnectionState.done) {
+                  //       //   return const Text('Empty data');
+                  //       // }
+                  //
+                  //       // Visibility(
+                  //       //   visible: isLoaded,
+                  //       //   replacement: const Center(
+                  //       //     child: CircularProgressIndicator(),
+                  //       //   ),
+                  //       //   child: ListView.builder(
+                  //       //       physics: const BouncingScrollPhysics(),
+                  //       //       shrinkWrap: true,
+                  //       //       // itemCount: 5,
+                  //       //       itemCount: orderData?.data.length,
+                  //       //       itemBuilder: (context, index) {
+                  //       //         final order = orderData?.data[index];
+                  //       //
+                  //       //         return Center(
+                  //       //             child:
+                  //       //                 Text("Status Code is ${order!.orderDetails[]}"));
+                  //       //         // return detailsOrderCard();
+                  //       //       }),
+                  //       // ),
+                  //     }),
                 ),
               ),
             ),
