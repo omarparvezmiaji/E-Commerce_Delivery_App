@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:url_launcher/url_launcher.dart';
 import '../common_widgets/app_text.dart';
 import '../screens/Pending_Delivery/view_details.dart';
 import '../styles/colors.dart';
@@ -17,6 +18,7 @@ cardWithoutImage({
   subtotal,
   createdAt,
   productOrQuantity,
+  customerData,
   mapOrReturn,
   viewOrInvoice,
 }) {
@@ -138,6 +140,85 @@ fixedSize:const Size(140.0, 20.0) ,
         //     ),
         //   ],
         // ),
+        Row(
+          children: [
+            ClipRRect(
+                borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
+                child:
+                //      orderData.product.thumbnailImage != '' && orderData.product.thumbnailImage != null ?
+                //  Image.network(
+                //   '$imageBaseUrl/${orderData.product.thumbnailImage}',
+                //   height: 80,
+                //   width: 80,
+                //   fit: BoxFit.fill,
+                // ) :
+                Image.asset('assets/images/saraBosorLogo.png',height: 80,width: 80,fit: BoxFit.cover,)
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Expanded(
+
+              // Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         orderData.product.name,
+              //         style: const TextStyle(
+              //             fontWeight: FontWeight.bold, fontSize: 16),
+              //       ),
+              //       Text(
+              //         orderData.product.category.name ?? " ",
+              //         style: const TextStyle(
+              //             fontWeight: FontWeight.w500, color: Colors.grey),
+              //       ),
+              //       //  time ??
+              //       Text(
+              //         createdAt,
+              //         style: const TextStyle(
+              //             fontWeight: FontWeight.w500, color: Colors.grey),
+              //       ),
+              //     ]),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      customerData.name,
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500, color: Colors.grey),
+                    ),
+                    Row(
+                      children: [
+
+                        // TextButton.icon(onPressed: onPressed, child: child)
+                        // ElevatedButton.icon(onPressed: onPressed, icon: icon, label: label)
+                        InkWell(
+                            onTap: () {
+                              UrlLauncher.launch('tel:${customerData.phone}');
+                              //print("${Patient[index].contact}");
+                            },
+                            child: const Icon(Icons.call)),
+                        Text("${customerData.phone}"),
+                      ],
+                    ),
+                    Text(
+                      customerData.phone,
+                      style: const TextStyle(
+                        fontSize: 14,
+                          fontWeight: FontWeight.w500, color: Colors.grey),
+                    ),
+                    //  time ??
+                    Text(
+                      customerData.address,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w500, color: Colors.grey),
+                    ),
+                  ]),
+            )
+          ],
+        ),
+        Divider(),
         Row(
           children: [
             Column(

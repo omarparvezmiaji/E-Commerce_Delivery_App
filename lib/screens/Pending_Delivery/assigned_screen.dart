@@ -7,6 +7,7 @@ import '../../modelClass/CardWithoutImage.dart';
 import '../../modelClass/api_request/order_model.dart';
 import '../../modelClass/details_order_card.dart';
 import '../../services.dart';
+
 /// Pending order----
 class AssignedScreen extends StatefulWidget {
   const AssignedScreen({Key? key}) : super(key: key);
@@ -32,8 +33,6 @@ class _AssignedScreenState extends State<AssignedScreen> {
       child: Scaffold(
         body: Center(
           child: Column(
-
-
             children: [
               myAppBar(
                 context: context,
@@ -43,23 +42,23 @@ class _AssignedScreenState extends State<AssignedScreen> {
               Expanded(
                 child: FutureBuilder(
                   future: getOrder(),
-                  builder: (
-                    BuildContext context,
-                    AsyncSnapshot snapshot
-                  ) {
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.connectionState == ConnectionState.active ||
+                    } else if (snapshot.connectionState ==
+                            ConnectionState.active ||
                         snapshot.connectionState == ConnectionState.done) {
                       if (snapshot.hasError) {
                         return const Center(
-                            child: Text('Error Occurs',
-                                style: TextStyle(color: Colors.red, fontSize: 36)));
+                            child: Text(' Please Retry',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16)));
                       } else if (snapshot.hasData) {
                         return ListView.builder(
                             itemCount: snapshot.data.length,
                             shrinkWrap: true,
-                            //  physics: NeverScrollableScrollPhysics(),
+                              physics: BouncingScrollPhysics(),
+                             // physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (BuildContext context, int index) {
                               //   var data = snapshot.data[index]["orderDetails"][index].product.name;
                               //  var data = snapshot.data[index]["orderDetails"][index]['product'];
@@ -69,17 +68,23 @@ class _AssignedScreenState extends State<AssignedScreen> {
                               var totalQuantity = data.totalQuantity;
                               var subtotal = data.subtotal;
                               var createdAt = data.createdAt;
+                              var customerData = data.orderCustomerInfo;
                               DateTime localDate =
-                                  DateTime.parse(createdAt.toString()).toLocal();
+                                  DateTime.parse(createdAt.toString())
+                                      .toLocal();
                               // return Text(orderNo.toString());
                               return ListView.builder(
+
                                   shrinkWrap: true,
                                   physics: ClampingScrollPhysics(),
-                                  itemCount: 1,
-                                  //  itemCount: data.orderDetails.length,
+                                itemCount: 1,
+                              // itemCount: data.orderDetails.length,
                                   itemBuilder: (BuildContext context, int i) {
                                     var orderData = data.orderDetails[i];
+                                   // var customerData = data.orderCustomerInfo[i];
+
                                     // return detailsOrderCard(
+                                    //   customerData:customerData ,
                                     //   context: context,
                                     //   orderData: orderData,
                                     //   orderNo: orderNo,
@@ -91,6 +96,7 @@ class _AssignedScreenState extends State<AssignedScreen> {
                                     return cardWithoutImage(
                                       context: context,
                                       orderData: orderData,
+                                      customerData:customerData ,
                                       orderNo: orderNo,
                                       totalQuantity: totalQuantity,
                                       createdAt: localDate.toString(),

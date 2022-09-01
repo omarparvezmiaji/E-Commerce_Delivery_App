@@ -8,7 +8,7 @@ import '../styles/my_app_size.dart';
 
 SharedPreferences? prefs;
 
-detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInvoice, orderData,orderNo,totalQuantity,subtotal,createdAt,productOrQuantity,mapOrReturn,viewOrInvoice}) {
+detailsOrderCard({ required context,time, customerData,color,viewMapOrReturn,viewDetailsOrInvoice, orderData,orderNo,totalQuantity,subtotal,createdAt,productOrQuantity,mapOrReturn,viewOrInvoice}) {
   // print('${orderData.product.image}');
   // print("Name is ${orderData.product.name}");
   // print("Sku is ${orderData.product.slug}");
@@ -73,7 +73,7 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
                   style: ElevatedButton.styleFrom(
                     // padding: const EdgeInsets.only(top: 5, bottom: 5),
                     // elevation: 0,
-                      side: BorderSide(
+                      side: const BorderSide(
                           width: 0.5, style: BorderStyle.solid),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
@@ -106,47 +106,68 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
               ],
             ),
           ),
-          // Row(
-          //   children: [
-          //     ClipRRect(
-          //         borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
-          //          child:
-          //         //      orderData.product.thumbnailImage != '' && orderData.product.thumbnailImage != null ?
-          //         //  Image.network(
-          //         //   '$imageBaseUrl/${orderData.product.thumbnailImage}',
-          //         //   height: 80,
-          //         //   width: 80,
-          //         //   fit: BoxFit.fill,
-          //         // ) :
-          //         Image.asset('assets/images/saraBosorLogo.png',height: 80,width: 80,fit: BoxFit.cover,)
-          //         ),
-          //     const SizedBox(
-          //       width: 8,
-          //     ),
-          //     Expanded(
-          //       child: Column(
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           children: [
-          //             Text(
-          //               orderData.product.name,
-          //               style: const TextStyle(
-          //                   fontWeight: FontWeight.bold, fontSize: 16),
-          //             ),
-          //             Text(
-          //               orderData.product.category.name ?? " ",
-          //               style: const TextStyle(
-          //                   fontWeight: FontWeight.w500, color: Colors.grey),
-          //             ),
-          //             //  time ??
-          //             Text(
-          //              createdAt,
-          //               style: const TextStyle(
-          //                   fontWeight: FontWeight.w500, color: Colors.grey),
-          //             ),
-          //           ]),
-          //     )
-          //   ],
-          // ),
+          Row(
+            children: [
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(AppSize.borderRadiusSize),
+                   child:
+                  //      orderData.product.thumbnailImage != '' && orderData.product.thumbnailImage != null ?
+                  //  Image.network(
+                  //   '$imageBaseUrl/${orderData.product.thumbnailImage}',
+                  //   height: 80,
+                  //   width: 80,
+                  //   fit: BoxFit.fill,
+                  // ) :
+                  Image.asset('assets/images/saraBosorLogo.png',height: 80,width: 80,fit: BoxFit.cover,)
+                  ),
+              const SizedBox(
+                width: 8,
+              ),
+              Expanded(
+
+                // Column(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: [
+                //       Text(
+                //         orderData.product.name,
+                //         style: const TextStyle(
+                //             fontWeight: FontWeight.bold, fontSize: 16),
+                //       ),
+                //       Text(
+                //         orderData.product.category.name ?? " ",
+                //         style: const TextStyle(
+                //             fontWeight: FontWeight.w500, color: Colors.grey),
+                //       ),
+                //       //  time ??
+                //       Text(
+                //         createdAt,
+                //         style: const TextStyle(
+                //             fontWeight: FontWeight.w500, color: Colors.grey),
+                //       ),
+                //     ]),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        customerData.name,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        customerData.phone,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500, color: Colors.grey),
+                      ),
+                      //  time ??
+                      Text(
+                        customerData.address,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500, color: Colors.grey),
+                      ),
+                    ]),
+              )
+            ],
+          ),
           Divider(),
           Padding(
             padding: const EdgeInsets.only(right: 10.0, top: 10, bottom: 2),
@@ -168,7 +189,8 @@ detailsOrderCard({ required context,time, color,viewMapOrReturn,viewDetailsOrInv
                 Text(
                  "৳ ${double.parse(subtotal).toStringAsFixed(2)}" ,
                   style: const TextStyle(
-                      fontSize: 16,
+                     // fontSize: 16,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.w900,
                       color: Colors.red),
                 ),
