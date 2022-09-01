@@ -185,8 +185,8 @@ fixedSize:const Size(140.0, 20.0) ,
                     Text(
                       customerData.name,
                       style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500, color: Colors.grey),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500, color: Colors.black),
                     ),
                     Row(
                       children: [
@@ -199,15 +199,11 @@ fixedSize:const Size(140.0, 20.0) ,
                               //print("${Patient[index].contact}");
                             },
                             child: const Icon(Icons.call)),
-                        Text("${customerData.phone}"),
+                        Text("${customerData.phone}",style: const TextStyle(
+                            fontWeight: FontWeight.w600, color: Colors.grey),),
                       ],
                     ),
-                    Text(
-                      customerData.phone,
-                      style: const TextStyle(
-                        fontSize: 14,
-                          fontWeight: FontWeight.w500, color: Colors.grey),
-                    ),
+
                     //  time ??
                     Text(
                       customerData.address,
