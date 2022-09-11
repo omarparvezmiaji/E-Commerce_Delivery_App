@@ -21,23 +21,38 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      child: RaisedButton(
-        visualDensity: VisualDensity.compact,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(roundness),
+      child:  ElevatedButton(
+        style:  ElevatedButton.styleFrom(
+
+          backgroundColor:  Colors.red[900],
+          textStyle: const TextStyle(
+            color:  AppColors.lightColor,
+          ),
+
+          visualDensity: VisualDensity.compact,
+
+          shape: RoundedRectangleBorder(
+
+
+            borderRadius: BorderRadius.circular(roundness),
+          ),
+
+
+
+
+          elevation: 10.0,
+          padding: padding,
+
         ),
+
    //   color: AppColors.primaryColor,
        // color: AppColors.blueDark,
-     color: Colors.red[900],
 
-        textColor: AppColors.lightColor,
-        elevation: 10.0,
-        padding: padding,
         child: Stack(
           fit: StackFit.passthrough,
           children: <Widget>[
-            Center(
-              child: Text(
+          Center(
+          child: Text(
                 label,
                 textAlign: TextAlign.center,
                 style: TextStyle(

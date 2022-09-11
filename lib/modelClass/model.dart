@@ -1,4 +1,3 @@
-
 import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 
 import 'package:delivery_app/navigator/navigator.dart';
@@ -10,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import '../screens/Pending_Delivery/assigned_screen.dart';
 import '../screens/Pending_Delivery/pending_delivery_main.dart';
+import '../screens/Pending_Delivery/assigned_delivery-_screen.dart';
+import '../screens/Pending_Delivery/picked_screen.dart';
 import '../screens/complete_delivery/completed_delivery_items.dart';
 
 class DashBoardModel {
@@ -19,7 +20,10 @@ class DashBoardModel {
   int counter;
 
   DashBoardModel(
-      {this.name, this.imagePath, required this.counter, required this.pageName});
+      {this.name,
+      this.imagePath,
+      required this.counter,
+      required this.pageName});
 }
 
 var demoDashBoardModel = [
@@ -27,13 +31,14 @@ var demoDashBoardModel = [
       name: "Complete Delivery",
       imagePath: "assets/dashboard/complet.png",
       counter: 0,
-      pageName:  CompletedDeliveryItems()),
+      pageName: CompletedDeliveryItems()),
   DashBoardModel(
-      name: "Pending Delivery",
-      imagePath: "assets/dashboard/pending.png",
-      counter: 0,
-      pageName: AssignedScreen()),
-     // pageName: PendingDelivery()),
+    name: "Assigned Delivery",
+    imagePath: "assets/dashboard/pending.png",
+    counter: 0,
+    pageName: AssignedDelivery(),
+    // pageName: PendingDelivery()
+  ),
   DashBoardModel(
       name: "Total Collected",
       imagePath: "assets/dashboard/collection.png",

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:delivery_app/common_widgets/app_text.dart';
 import 'package:delivery_app/navigator/navigator.dart';
+import 'package:delivery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:delivery_app/screens/login.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -14,52 +15,54 @@ class AnimatedSplashScreen extends StatefulWidget {
   State<AnimatedSplashScreen> createState() => _AnimatedSplashScreenState();
 }
 
-class _AnimatedSplashScreenState extends State<AnimatedSplashScreen> with SingleTickerProviderStateMixin {
-
+class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> animation;
   final String imagePath = "assets/welcome_image.jpg";
   SharedPreferences? prefs;
   var previousLoginChecker;
 
-
   startTime() async {
     var _duration = Duration(milliseconds: 3000);
-    return Timer(_duration,loadUserInfo);
+    return Timer(_duration, loadUserInfo);
   }
 
   // _nextPageInfo() async {
   //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (contex)=>LoginPage()));
   // }
 
-  sharedPreferences() async{
+  sharedPreferences() async {
     prefs = await SharedPreferences.getInstance();
     previousLoginChecker = (prefs!.getString('token') ?? '');
-    print("For Testing Token:::::::" + previousLoginChecker );
+    print("For Testing Token:::::::" + previousLoginChecker);
   }
 
   loadUserInfo() async {
-    previousLoginChecker != "" && previousLoginChecker != null ?
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Navigator_Page()), (route) => false) :
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+    previousLoginChecker != "" && previousLoginChecker != null
+        ? Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const Dashboard()),
+            (route) => false)
+        : Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => LoginPage()),
+            (route) => false);
   }
-
 
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 1));
-    animation = CurvedAnimation(parent: animationController, curve: Curves.easeOut);
+    animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 1));
+    animation =
+        CurvedAnimation(parent: animationController, curve: Curves.easeOut);
 
     animation.addListener(() => this.setState(() {}));
     animationController.forward();
     sharedPreferences();
     startTime();
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +78,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen> with Single
             ],
           ),
         ),
-        ),
+      ),
 
       // Container(
       //   padding: EdgeInsets.symmetric(horizontal: 30),
@@ -94,9 +97,9 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen> with Single
       //     ),
       //   ),
       // ),
-      
     );
   }
+
   Widget welcomeTextWidget() {
     return AppText(
       text: "Welcome",

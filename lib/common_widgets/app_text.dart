@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
 //   @override
   AppText({required text, fontSize, fontWeight, color, textAlign}) {
     return Text(
-      text,
+      text.toString(),
       textAlign: textAlign == null ? null : TextAlign.center,
 
       style: TextStyle(

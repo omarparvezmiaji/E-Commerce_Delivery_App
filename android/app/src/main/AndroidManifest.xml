@@ -2,7 +2,10 @@
     package="com.example.delivery_app">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-   <application
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
         android:label="delivery_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -32,5 +35,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyDMW212-ZhOC3xYvDui2Dk2puaTX_HJF-Q"/>
     </application>
 </manifest>

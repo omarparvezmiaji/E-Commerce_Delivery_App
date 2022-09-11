@@ -6,8 +6,6 @@ import 'package:delivery_app/modelClass/model.dart';
 import 'package:delivery_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
-
-
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -16,30 +14,26 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         drawer: myDrawer(context),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // AppBanner(
               //   //leading: Icons.menu,
               //   titel_text: "DashBoard",
               //   //trailing: Icons.notifications,onPressed: getButton(context),
               // ),
-              myAppBar(
-                  context: context,
-                  title: 'DashBoard',
-                  page: 'DashBoard'),
-              padded(SearchWidget()),
+              myAppBar(context: context, title: 'DashBoard', page: 'DashBoard'),
+              /// search bar___________
+              // padded(SearchWidget()),
               const SizedBox(
-                height: 10,
+                height: 100.0,
               ),
               GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
@@ -54,20 +48,20 @@ class _DashboardState extends State<Dashboard> {
                   itemCount: demoDashBoardModel.length,
                   itemBuilder: (context, index) {
                     return padded(GestureDetector(
-                      onTap: (){
-
-
+                      onTap: () {
                         // if(demoDashBoardModel[index].name != "Complete Delivery")
                         // {
                         //   Navigator.push(context, MaterialPageRoute(builder: (context) => demoDashBoardModel[index].pageName));
                         //   // Navigator.push(context, MaterialPageRoute(builder: (context)=>(){}));
                         // }
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => demoDashBoardModel[index].pageName));
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    demoDashBoardModel[index].pageName));
                       },
                       child: Container(
-
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                             color: AppColors.lightColor,
@@ -78,18 +72,23 @@ class _DashboardState extends State<Dashboard> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image(image: AssetImage('${demoDashBoardModel[index].imagePath}'),width: 90,height: 90),
-                              AppText(text: demoDashBoardModel[index].name,fontSize:  18.0),
-                              Container(
-                                //margin: EdgeInsets.all(15.0),
-                                //   height: 30,
-                                //   width: 30,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: AppColors.darkColor),
-                                    shape: BoxShape.circle,),
+                              Image(
+                                  image: AssetImage(
+                                      '${demoDashBoardModel[index].imagePath}'),
+                                  width: 90,
+                                  height: 90),
+                              AppText(
+                                  text: demoDashBoardModel[index].name,
+                                  fontSize: 18.0),
+                              // Container(
+                              //   margin: EdgeInsets.all(15.0),
+                              //     height: 30,
+                              //     width: 30,
+                              //     decoration: BoxDecoration(
+                              //       border: Border.all(color: AppColors.darkColor),
+                              //       shape: BoxShape.circle,),
 
-                                  child: Center(child: AppText(text: demoDashBoardModel[index].counter.toString(),fontSize:  18.0)))
-
+                              //     child: Center(child: AppText(text: demoDashBoardModel[index].counter.toString(),fontSize:  18.0)))
                             ],
                           ),
                         ),
@@ -129,8 +128,8 @@ class _DashboardState extends State<Dashboard> {
                       fillColor: AppColors.fillColor,
                       filled: true,
                       hintText: "Search",
-                      hintStyle:
-                      const TextStyle(fontSize: 20, color: Colors.black87))),
+                      hintStyle: const TextStyle(
+                          fontSize: 20, color: Colors.black87))),
             ),
             InkWell(
               child: const Icon(

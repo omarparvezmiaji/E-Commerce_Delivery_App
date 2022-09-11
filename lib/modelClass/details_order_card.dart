@@ -36,7 +36,9 @@ detailsOrderCard({ required context,time, customerData,color,viewMapOrReturn,vie
               offset: Offset(-1, -1),
               blurRadius: 10,
             ),
-          ]),
+          ]
+
+      ),
       child: Column(
         children: [
           Padding(
